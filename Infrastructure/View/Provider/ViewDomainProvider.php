@@ -11,5 +11,9 @@ class ViewDomainProvider extends ServiceProvider {
         $this->loadViewsFrom(realpath(base_path('Web/Dashboard/View')), 'dashboard');
         $this->loadViewsFrom(realpath(base_path('Web/Layout/View')), 'layout');
         $this->loadViewsFrom(realpath(base_path('Web/Login/View')), 'login');
+        $this->loadViewsFrom(realpath(base_path('Web/Narrator/View')), 'narrator');
+        $this->loadViewsFrom(realpath(base_path('Web/Map/View')), 'map');
+        $this->loadViewsFrom(realpath(base_path('Web/Series/View')), 'series');
+        $this->loadViewsFrom(realpath(base_path('Web/Universe/View')), 'universe');
     }
 }

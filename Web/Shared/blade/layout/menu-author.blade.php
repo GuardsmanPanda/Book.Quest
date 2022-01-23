@@ -1,7 +1,7 @@
 <div class="flex flex-col min-h-full bg-gray-800 w-56">
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
         <nav class="flex-1 px-2 bg-gray-800 space-y-1" aria-label="Sidebar">
-            @include('layout.component.menu-item', ['title' => 'Dashboard', 'url' => '/author', 'icon' => 'clipboard'])
+            @include('layout.component.menu-item', ['title' => 'Author Home', 'url' => '/author', 'icon' => 'home'])
             @include('layout.component.menu-item', ['title' => 'Find Authors', 'url' => '/author/find', 'icon' => 'clipboard'])
             @include('layout.component.menu-item', ['title' => 'Author Kanban', 'url' => '/author/kanban', 'icon' => 'user-group', 'counter' => 4])
             @include('layout.component.menu-item', ['title' => 'My Author List', 'url' => '/author/kanban', 'icon' => 'user-group', 'counter' => 4])

@@ -43,4 +43,8 @@ class Req {
         $m = self::$r->method();
         return $m !== 'GET' && $m !== 'HEAD';
     }
+
+    public static function getAreaFromPath(): string {
+        return explode('/', self::$r->path())[0];
+    }
 }

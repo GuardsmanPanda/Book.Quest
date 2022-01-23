@@ -13,7 +13,11 @@
 <body class="bg-gray-100 min-h-screen flex flex-col">
 @include('layout.top-nav')
 <div class="flex flex-1 h-full">
-    <div id="left-menu">@include('layout.menu-book')</div>
+    <div id="left-menu">@include(match (\Infrastructure\Http\Service\Req::getAreaFromPath()) {
+        'author' => 'layout.menu-author',
+        default => 'layout.menu-book'
+    })
+    </div>
     <div id="primary" {!!$primary_hx!!}  class="flex-1 h-full">
     </div>
 </div>

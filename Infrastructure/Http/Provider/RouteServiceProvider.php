@@ -16,6 +16,7 @@ class RouteServiceProvider extends ServiceProvider {
                 Route::prefix('book')->group(base_path('Web/Book/routes.php'));
                 Route::prefix('dashboard')->group(base_path('Web/Dashboard/routes.php'));
                 Route::prefix('login')->group(base_path('Web/Login/routes.php'));
+                Route::prefix('universe')->group(base_path('Web/Universe/routes.php'));
             });
         });
     }
