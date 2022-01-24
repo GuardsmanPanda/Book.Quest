@@ -13,19 +13,19 @@
         @if(Infrastructure\Auth\Auth::hasPermission('author__create'))
             @include('layout.component.menu-button', ['text' => 'Add Author', 'url' => '/author/dialog-create'])
         @endif
-        <div class=" flex bg-gray-700 p-4">
-            <a href="#" class="flex-shrink-0 w-full group block">
+        <div class="bg-gray-700 p-2">
+            <a href="#" class="flex-shrink-0 w-full group block p-2">
                 <div class="flex items-center">
-                    <div>
-                        <img class="inline-block h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="text-gray-500 group-hover:text-gray-300 mr-1 flex-shrink-0 h-8 w-8"
+                         fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        {!! config("icons.cube") !!}
+                    </svg>
+                    <p class="text-lime-400 font-medium text-3xl">372</p>
                     <div class="ml-3">
-                        <p class="text-sm font-medium text-white">
-                            Tom Cook
-                        </p>
-                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                            View profile
-                        </p>
+                        <p class="text-sm font-medium text-white">Authors</p>
+                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">Perused</p>
                     </div>
                 </div>
             </a>

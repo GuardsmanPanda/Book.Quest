@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The quest for more books">
     <title>{{ config('app.name') }}</title>
-    <script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js" integrity="sha384-tvG/2mnCFmGQzYC1Oh3qxQ7CkQ9kMzYjWZSNtrRZygHPDDqottzEJsqS4oUVodhW" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"
+            integrity="sha384-tvG/2mnCFmGQzYC1Oh3qxQ7CkQ9kMzYjWZSNtrRZygHPDDqottzEJsqS4oUVodhW"
+            crossorigin="anonymous"></script>
     <script src="{{mix('/static/dist/app.js')}}"></script>
     <link rel="stylesheet" href="{{mix('/static/dist/app.css')}}">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -15,6 +17,10 @@
 <div class="flex flex-1 h-full">
     <div id="left-menu">@include(match (\Infrastructure\Http\Service\Req::getAreaFromPath()) {
         'author' => 'layout.menu-author',
+        'narrator' => 'layout.menu-narrator',
+        'map' => 'layout.menu-map',
+        'series' => 'layout.menu-series',
+        'universe' => 'layout.menu-universe',
         default => 'layout.menu-book'
     })
     </div>
@@ -27,7 +33,8 @@
         <div id="pop-title">Dialog</div>
         <form method="dialog">
             <button class="w-8 h-8 hover:text-red-600 align-middle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>

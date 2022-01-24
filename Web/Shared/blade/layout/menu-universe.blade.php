@@ -15,11 +15,8 @@
           Book Home
         </span>
             </a>
-            @include('layout.component.menu-item', ['title' => 'Find Books', 'url' => '/book/find', 'icon' => 'clipboard'])
-            @include('layout.component.menu-item', ['title' => 'Book Kanban', 'url' => '/book/kanban', 'icon' => 'clipboard'])
-            @include('layout.component.menu-item', ['title' => 'My Book List', 'url' => '/book/my-list', 'icon' => 'clipboard'])
-            @include('layout.component.menu-item', ['title' => 'My Book Map', 'url' => '/book/my-map', 'icon' => 'clipboard'])
-            @include('layout.component.menu-item', ['title' => 'Random Book', 'url' => '/book/random', 'icon' => 'clipboard'])
+            @include('layout.component.menu-item', ['title' => 'Find Universes', 'url' => '/book/find', 'icon' => 'clipboard'])
+            @include('layout.component.menu-item', ['title' => 'Random Universe', 'url' => '/book/random', 'icon' => 'clipboard'])
         </nav>
     </div>
     <div class="flex-shrink-0 flex flex-col gap-2">
@@ -30,10 +27,10 @@
                          fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         {!! config("icons.cube") !!}
                     </svg>
-                    <p class="text-amber-400 font-medium text-3xl">372</p>
+                    <p class="text-emerald-400 font-medium text-3xl">372</p>
                     <div class="ml-3">
-                        <p class="text-sm font-medium text-white">Books</p>
-                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">Read</p>
+                        <p class="text-sm font-medium text-white">Universes</p>
+                        <p class="text-xs font-medium text-gray-300 group-hover:text-gray-200">Explored</p>
                     </div>
                 </div>
             </a>
