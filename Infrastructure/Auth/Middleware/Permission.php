@@ -4,7 +4,7 @@ namespace Infrastructure\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Infrastructure\Auth\Auth;
+use Infrastructure\Auth\Service\Auth;
 use function abort_unless;
 
 class Permission {

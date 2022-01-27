@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthorController extends Controller {
     public function createDialog(): View {
-        $goodreads_url = Req::input('goodreads_url');
+        $goodreads_url = Req::getString('goodreads_url', true);
         return view('author::dialog.add-author', [
             'goodreads_url' => $goodreads_url,
             'goodreads_data' => $goodreads_url === null ? [] : AuthorScraper::getDataFromAuthorURL($goodreads_url),
@@ -20,7 +20,7 @@ class AuthorController extends Controller {
     }
 
     public function create(): Response {
-        AuthorCreationService::createAuthor(Req::input());
+        AuthorCreationService::createAuthor(Req::allInput());
         return Htmx::hxRedirect('/author');
     }
 }

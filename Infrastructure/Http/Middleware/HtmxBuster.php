@@ -16,7 +16,7 @@ class HtmxBuster {
             $res = $next($request);
             if ($new_area !== $prev_area) {
                 $menu = match ($new_area) {
-                    'author', 'universe' => view("layout.menu-$new_area")->render(),
+                    'author', 'book', 'map', 'narrator', 'series', 'universe' => view("layout.menu-$new_area")->render(),
                     default => '',
                 };
                 if ($menu !== '') {
@@ -24,6 +24,10 @@ class HtmxBuster {
                 }
             }
             return $res;
+        }
+        $route_prefix = explode('/', ltrim($request->path(), '/'))[0];
+        if ($route_prefix === 'login') {
+            return $next($request);
         }
         if ($request->method() === 'GET' && $request->header('HX-request') === null && str_contains($request->header('accept'), 'html')) {
             return response()->view('layout.layout', [

@@ -10,7 +10,7 @@
         </nav>
     </div>
     <div class="flex-shrink-0 flex flex-col gap-2">
-        @if(Infrastructure\Auth\Auth::hasPermission('author__create'))
+        @if(\Infrastructure\Auth\Service\Auth::hasPermission('author__create'))
             @include('layout.component.menu-button', ['text' => 'Add Author', 'url' => '/author/dialog-create'])
         @endif
         <div class="bg-gray-700 p-2">

@@ -3,7 +3,7 @@
 namespace Infrastructure\Audit\Crud;
 
 use Illuminate\Support\Facades\DB;
-use Infrastructure\Auth\Auth;
+use Infrastructure\Auth\Service\Auth;
 
 class AuditChangeCreator {
     public static function create(

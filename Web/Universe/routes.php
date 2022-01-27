@@ -1,5 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Web\Universe\Controller\UniverseHomeController;
 
-Route::get('/', [\Web\Universe\Controller\UniverseHomeController::class, 'index']);
+Route::get('/', [UniverseHomeController::class, 'index']);

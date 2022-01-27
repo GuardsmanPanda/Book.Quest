@@ -6,24 +6,24 @@ use Infrastructure\App\Model\Config;
 
 class ShortUrlCodeService {
     public static function generateCode(): string {
-        $chars = '-0123456789_abcdefghijklmnopqrstuvwxyz';
+        $chars = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
         $url_config = Config::lockForUpdate()->find('short_url_code');
         $value = $url_config->config_value;
         // Change value string into array of characters
         $value_array = str_split($value);
 
-        // map each character to the index in the chars string
-        $value_array = array_map(function($char) use ($chars) {
+        // Map each character to the index in the chars string
+        $value_array = array_map(static function($char) use ($chars) {
             return strpos($chars, $char);
         }, $value_array);
 
-        // reverse the value array
+        // Reverse the value array
         $value_array = array_reverse($value_array);
         $value_array[0]++;
 
         // For each index, if it is greater than the length of the chars string, set it to 0 and increment the next element
-        for ($i = 0; $i < count($value_array); $i++) {
-            if ($value_array[$i] >= strlen($chars)) {
+        foreach ($value_array as $i => $iValue) {
+            if ($iValue >= strlen($chars)) {
                 $value_array[$i] = 0;
                 if (isset($value_array[$i + 1])) {
                     $value_array[$i + 1]++;
@@ -33,8 +33,8 @@ class ShortUrlCodeService {
             }
         }
 
-        // map each index back to a character
-        $value_array = array_map(function($index) use ($chars) {
+        // Map each index back to a character
+        $value_array = array_map(static function($index) use ($chars) {
             return $chars[$index];
         }, $value_array);
 

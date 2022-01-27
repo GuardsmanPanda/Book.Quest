@@ -16,8 +16,8 @@
         <a href="/map" hx-get="/map" hx-push-url="/map" class="px-2 py-3 text-sky-500 hover:text-sky-300 hover:underline decoration-2">Map</a>
     </div>
     <div>
-        @if(Infrastructure\Auth\Auth::user() !== null)
-            <div>{{\Infrastructure\Auth\Auth::user()->display_name}}</div>
+        @if(\Infrastructure\Auth\Service\Auth::user() !== null)
+            <div>{{\Infrastructure\Auth\Service\Auth::user()->display_name}}</div>
         @else
             <button onclick="dialog('/login/login-selector-dialog')" class="text-white font-medium">Login</button>
         @endif

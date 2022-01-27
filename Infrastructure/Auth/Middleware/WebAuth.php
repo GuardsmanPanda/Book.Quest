@@ -4,10 +4,9 @@ namespace Infrastructure\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Infrastructure\Auth\Auth;
+use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Req;
 use function abort_unless;
-use function redirect;
 use function session;
 
 class WebAuth {

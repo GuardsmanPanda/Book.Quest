@@ -5,7 +5,7 @@ namespace Infrastructure\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Infrastructure\Auth\Auth;
+use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Req;
 
 class Idempotency {

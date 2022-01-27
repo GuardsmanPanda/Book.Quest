@@ -824,16 +824,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.0.0-beta.3",
+            "version": "v9.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ac6fc32c2933d5868a2c0d2aea4af9405d710378"
+                "reference": "b3eaffd90170512dfa101eac6f5e677a261ad6b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ac6fc32c2933d5868a2c0d2aea4af9405d710378",
-                "reference": "ac6fc32c2933d5868a2c0d2aea4af9405d710378",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b3eaffd90170512dfa101eac6f5e677a261ad6b5",
+                "reference": "b3eaffd90170512dfa101eac6f5e677a261ad6b5",
                 "shasum": ""
             },
             "require": {
@@ -843,7 +843,7 @@
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "laravel/serializable-closure": "^1.0",
-                "league/commonmark": "^2.0.2",
+                "league/commonmark": "^2.2",
                 "league/flysystem": "^3.0",
                 "monolog/monolog": "^2.0",
                 "nesbot/carbon": "^2.53.1",
@@ -864,7 +864,7 @@
                 "symfony/var-dumper": "^6.0",
                 "tijsverkoyen/css-to-inline-styles": "^2.2.2",
                 "vlucas/phpdotenv": "^5.4.1",
-                "voku/portable-ascii": "^1.4.8"
+                "voku/portable-ascii": "^1.6.1"
             },
             "conflict": {
                 "tightenco/collect": "<5.5.33"
@@ -999,7 +999,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-01-18T18:23:20+00:00"
+            "time": "2022-01-25T16:42:16+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -1062,16 +1062,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "c5aadcc15548629787d02b86a7afef03b46271b5"
+                "reference": "f8afb78f087777b040e0ab8a6b6ca93f6fc3f18a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c5aadcc15548629787d02b86a7afef03b46271b5",
-                "reference": "c5aadcc15548629787d02b86a7afef03b46271b5",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/f8afb78f087777b040e0ab8a6b6ca93f6fc3f18a",
+                "reference": "f8afb78f087777b040e0ab8a6b6ca93f6fc3f18a",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                 "league/config": "^1.1.1",
                 "php": "^7.4 || ^8.0",
                 "psr/event-dispatcher": "^1.0",
-                "symfony/deprecation-contracts": "^v2.1 || ^3.0",
+                "symfony/deprecation-contracts": "^2.1 || ^3.0",
                 "symfony/polyfill-php80": "^1.15"
             },
             "require-dev": {
@@ -1162,7 +1162,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-22T14:06:22+00:00"
+            "time": "2022-01-25T14:37:33+00:00"
         },
         {
             "name": "league/config",
