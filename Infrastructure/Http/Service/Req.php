@@ -18,7 +18,6 @@ class Req {
     }
 
 
-
     public static function method(): string {
         return self::$r?->method() ?? 'CLI';
     }
@@ -36,7 +35,7 @@ class Req {
     }
 
     public static function ipCountry(): string {
-        return self::header('CF_IPCOUNTRY') ?? 'XX';
+        return  self::$r?->header('CF_IPCOUNTRY') ?? 'XX';
     }
 
     public static function isWriteRequest(): bool {
@@ -77,6 +76,9 @@ class Req {
 
     public static function getInt(string $name, bool $null_if_missing  = false): ?int {
         if (!self::$r->has($name)) {
+            if ($null_if_missing) {
+                return null;
+            }
             throw new RuntimeException("No input field named: $name");
         }
         $value = self::$r->get($name);
@@ -88,6 +90,9 @@ class Req {
 
     public static function getFloat(string $name, bool $null_if_missing  = false): ?float {
         if (!self::$r->has($name)) {
+            if ($null_if_missing) {
+                return null;
+            }
             throw new RuntimeException("No input field named: $name");
         }
         $value = self::$r->get($name);
@@ -99,17 +104,23 @@ class Req {
 
     public static function getBool(string $name, bool $null_if_missing  = false): ?bool {
         if (!self::$r->has($name)) {
+            if ($null_if_missing) {
+                return null;
+            }
             throw new RuntimeException("No input field named: $name");
         }
         return match (self::$r->get($name)) {
-            'true' => true,
-            'false' => false,
+            'true', true => true,
+            'false', false => false,
             default => throw new RuntimeException("Invalid boolean value: " . self::$r->get($name))
         };
     }
 
     public static function getArray(string $name, bool $null_if_missing  = false): ?array {
         if (!self::$r->has($name)) {
+            if ($null_if_missing) {
+                return null;
+            }
             throw new RuntimeException("No input field named: $name");
         }
         return explode(',', self::$r->get($name));
@@ -117,27 +128,37 @@ class Req {
 
     public static function getJson(string $name, bool $null_if_missing  = false): ?array {
         if (!self::$r->has($name)) {
+            if ($null_if_missing) {
+                return null;
+            }
             throw new RuntimeException("No input field named: $name");
         }
         return json_decode(self::$r->get($name), false, 512, JSON_THROW_ON_ERROR);
     }
 
     public static function getDate(string $name, bool $null_if_missing  = false): ?CarbonImmutable {
-        if (!self::$r->has($name)) {
-            throw new RuntimeException("No input field named: $name");
+        $text = self::getString(name: $name, null_if_missing: $null_if_missing);
+        if ($text === null) {
+            return null;
         }
-        $input = explode('-', self::$r->get($name));
-        if (count($input) !== 3 || !checkdate($input[1], $input[2], $input[0])) {
-            throw new RuntimeException("Invalid date format: $name, must be YYYY-MM-DD");
+        $arr = explode('-', $text);
+        if (count($arr) !== 3 || strlen($arr[0]) !== 4 || strlen($arr[1]) !== 2 || strlen($arr[2]) !== 2) {
+            throw new RuntimeException("Invalid date format: $text, must be YYYY-MM-DD");
         }
-        return CarbonImmutable::createFromDate($input[0], $input[1], $input[2]);
+        $year = (int)$arr[0];
+        $month = (int)$arr[1];
+        $day = (int)$arr[2];
+        if (!checkdate(month: $month, day: $day, year: $year)) {
+            throw new RuntimeException("Invalid date: $text");
+        }
+        return CarbonImmutable::createFromDate(year: $year, month: $month, day: $day);
     }
 
     public static function getDateTime(string $name, bool $null_if_missing  = false): ?CarbonImmutable {
-        if (!self::$r->has($name)) {
-            throw new RuntimeException("No input field named: $name");
+        $text = self::getString(name: $name, null_if_missing: $null_if_missing);
+        if ($text === null) {
+            return null;
         }
-        $input = explode(' ', self::$r->get($name));
         //TODO: finish this
         return self::$r->get($name);
     }

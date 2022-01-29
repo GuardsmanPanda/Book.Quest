@@ -20,6 +20,9 @@
         </nav>
     </div>
     <div class="flex-shrink-0 flex flex-col gap-2">
+        @if(\Infrastructure\Auth\Service\Auth::hasPermission('universe__create'))
+            @include('layout.component.menu-button', ['text' => 'Add Universe', 'url' => '/universe/dialog-create'])
+        @endif
         <div class="bg-gray-700 p-2">
             <a href="#" class="flex-shrink-0 w-full group block p-2">
                 <div class="flex items-center">

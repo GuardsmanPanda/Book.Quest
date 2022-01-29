@@ -11,6 +11,9 @@ require('esbuild').build({
     outfile: 'public/static/dist/app.js',
 }).catch(() => process.exit(1))
 
+const exec = require('child_process').exec;
+exec('npx tailwindcss -i Web/Shared/css/app.css -o public/static/dist/app.css', function(error, stdout, stderr){ console.log('\n----\nCSS ' + stdout);  console.log(stderr); });
+
 const fs = require('fs')
 fs.writeFile('public/mix-manifest.json', JSON.stringify({
     "/static/dist/app.js": "/static/dist/app.js?id=" + Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2),

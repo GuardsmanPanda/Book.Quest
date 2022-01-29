@@ -15,7 +15,7 @@ class PhpStan extends Command {
      */
     public function handle(): mixed {
         $this->info("Running PHPStan on the application");
-        exec(PHP_BINARY . ' ' . base_path('vendor/bin/') . "phpstan analyse Domain Service Web Integration Infrastructure --level 6 --ansi", $res, $code);
+        exec(PHP_BINARY . ' ' . base_path('vendor/bin/') . "phpstan analyse Domain Service Web Integration Infrastructure --level 5 --ansi", $res, $code);
         // print the output
         foreach ($res as $line) {
             $this->info($line);
