@@ -1,4 +1,6 @@
 import dialogPolyfill from 'dialog-polyfill';
+import 'hyperscript.org'
+import 'htmx.org'
 
 //window.htmx = require('htmx.org');
 htmx.config.historyCacheSize = 0;

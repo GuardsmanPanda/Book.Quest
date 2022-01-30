@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The quest for more books">
     <title>{{ config('app.name') }}</title>
-    <script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"
-            integrity="sha384-tvG/2mnCFmGQzYC1Oh3qxQ7CkQ9kMzYjWZSNtrRZygHPDDqottzEJsqS4oUVodhW"
-            crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/hyperscript.org@0.9.4"></script>
     <script src="{{mix('/static/dist/app.js')}}"></script>
     <link rel="stylesheet" href="{{mix('/static/dist/app.css')}}">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">

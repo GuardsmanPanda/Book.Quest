@@ -1,5 +1,5 @@
 <nav class=" bg-gray-900 text-gray-400 font-bold w-screen flex items-center px-4">
-    <a href="/dashboard" class="flex py-3 gap-4 text-red-500">
+    <a href="/dashboard" class="flex py-3 gap-4 text-red-400">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
              stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -8,12 +8,12 @@
         <div>Book.Quest</div>
     </a>
     <div class="flex flex-1 pl-6 items-center" hx-target="#primary">
-        <a href="/book" hx-get="/book"  hx-push-url="/book" class="px-2 py-3 text-amber-500 hover:text-amber-300 hover:underline decoration-2">Books</a>
-        <a href="/author" hx-get="/author" hx-push-url="/author" class="px-2 py-3 text-lime-500 hover:text-lime-300 hover:underline decoration-2">Authors</a>
-        <a href="/series" hx-get="/series" hx-push-url="/series" class="px-2 py-3 text-green-500 hover:text-green-300 hover:underline decoration-2">Series</a>
-        <a href="/universe" hx-get="/universe" hx-push-url="/universe" class="px-2 py-3 text-emerald-500 hover:text-emerald-300 hover:underline decoration-2">Universes</a>
-        <a href="/narrator" hx-get="/narrator" hx-push-url="/narrator" class="px-2 py-3 text-cyan-500 hover:text-cyan-300 hover:underline decoration-2">Narrators</a>
-        <a href="/map" hx-get="/map" hx-push-url="/map" class="px-2 py-3 text-sky-500 hover:text-sky-300 hover:underline decoration-2">Map</a>
+        <a href="/book" hx-get="/book"  hx-push-url="/book" class="px-2 py-3 text-amber-400 hover:text-amber-300 hover:underline decoration-2">Books</a>
+        <a href="/author" hx-get="/author" hx-push-url="/author" class="px-2 py-3 text-lime-400 hover:text-lime-300 hover:underline decoration-2">Authors</a>
+        <a href="/series" hx-get="/series" hx-push-url="/series" class="px-2 py-3 text-green-400 hover:text-green-300 hover:underline decoration-2">Series</a>
+        <a href="/universe" hx-get="/universe" hx-push-url="/universe" class="px-2 py-3 text-emerald-400 hover:text-emerald-300 hover:underline decoration-2">Universes</a>
+        <a href="/narrator" hx-get="/narrator" hx-push-url="/narrator" class="px-2 py-3 text-cyan-400 hover:text-cyan-300 hover:underline decoration-2">Narrators</a>
+        <a href="/map" hx-get="/map" hx-push-url="/map" class="px-2 py-3 text-sky-400 hover:text-sky-300 hover:underline decoration-2">Map</a>
     </div>
     <div>
         @if(\Infrastructure\Auth\Service\Auth::user() !== null)

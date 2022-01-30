@@ -36,9 +36,9 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property string $id
  * @property string $world_type
  * @property string $series_name
- * @property string $series_slug
  * @property string $universe_id
  * @property string $time_period_id
+ * @property string $series_short_url_code
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
  * @property Universe $universe

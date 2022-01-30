@@ -17,7 +17,6 @@ class Req {
         return self::$r?->header() ?? throw new RuntimeException("No Request");
     }
 
-
     public static function method(): string {
         return self::$r?->method() ?? 'CLI';
     }
@@ -63,23 +62,21 @@ class Req {
         return self::$r?->getContent() ?? throw new RuntimeException('No Content');
     }
 
+    public static function has(string $key): bool {
+        return self::$r?->has($key) ?? false;
+    }
+
 
     public static function getString(string $name, bool $null_if_missing  = false): ?string {
-        if (!self::$r->has($name)) {
-            if ($null_if_missing) {
-                return null;
-            }
-            throw new RuntimeException("No input field named: $name");
+        if (!self::has($name)) {
+            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
         }
         return self::$r->get($name);
     }
 
     public static function getInt(string $name, bool $null_if_missing  = false): ?int {
-        if (!self::$r->has($name)) {
-            if ($null_if_missing) {
-                return null;
-            }
-            throw new RuntimeException("No input field named: $name");
+        if (!self::has($name)) {
+            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
         }
         $value = self::$r->get($name);
         if (!ctype_digit($value)) {
@@ -89,11 +86,8 @@ class Req {
     }
 
     public static function getFloat(string $name, bool $null_if_missing  = false): ?float {
-        if (!self::$r->has($name)) {
-            if ($null_if_missing) {
-                return null;
-            }
-            throw new RuntimeException("No input field named: $name");
+        if (!self::has($name)) {
+            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
         }
         $value = self::$r->get($name);
         if (!is_numeric($value)) {
@@ -103,11 +97,8 @@ class Req {
     }
 
     public static function getBool(string $name, bool $null_if_missing  = false): ?bool {
-        if (!self::$r->has($name)) {
-            if ($null_if_missing) {
-                return null;
-            }
-            throw new RuntimeException("No input field named: $name");
+        if (!self::has($name)) {
+            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
         }
         return match (self::$r->get($name)) {
             'true', true => true,
@@ -117,21 +108,15 @@ class Req {
     }
 
     public static function getArray(string $name, bool $null_if_missing  = false): ?array {
-        if (!self::$r->has($name)) {
-            if ($null_if_missing) {
-                return null;
-            }
-            throw new RuntimeException("No input field named: $name");
+        if (!self::has($name)) {
+            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
         }
         return explode(',', self::$r->get($name));
     }
 
     public static function getJson(string $name, bool $null_if_missing  = false): ?array {
-        if (!self::$r->has($name)) {
-            if ($null_if_missing) {
-                return null;
-            }
-            throw new RuntimeException("No input field named: $name");
+        if (!self::has($name)) {
+            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
         }
         return json_decode(self::$r->get($name), false, 512, JSON_THROW_ON_ERROR);
     }

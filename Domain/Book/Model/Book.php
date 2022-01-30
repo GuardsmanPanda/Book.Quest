@@ -5,8 +5,6 @@ namespace Domain\Book\Model;
 use Carbon\CarbonInterface;
 use Domain\Book\Model\Category;
 use Domain\Book\Model\TimePeriod;
-use Domain\Series\Model\Series;
-use Domain\Universe\Model\Universe;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
@@ -57,9 +55,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property CarbonInterface $publication_date
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
- * @property Series $series
  * @property Category $category
- * @property Universe $universe
  * @property TimePeriod $time_period
  *
  * AUTO GENERATED FILE DO NOT MODIFY
@@ -94,11 +90,5 @@ class Book extends Model {
     }
     public function timePeriod(): BelongsTo {
         return $this->belongsTo(TimePeriod ::class, 'time_period_id', 'id');
-    }
-    public function series(): BelongsTo {
-        return $this->belongsTo(Series ::class, 'series_id', 'id');
-    }
-    public function universe(): BelongsTo {
-        return $this->belongsTo(Universe ::class, 'universe_id', 'id');
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Book\Enum;
+namespace Domain\App\Enum;
 
-enum AgeGroup: string {
+enum AgeGroupEnum: string {
     case Child = 'Children';
     case MiddleSchool = 'Middle School';
     case YoungAdult = 'Young Adult';

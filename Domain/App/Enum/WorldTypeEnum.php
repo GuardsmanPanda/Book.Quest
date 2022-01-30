@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Book\Enum;
+namespace Domain\App\Enum;
 
-enum WorldType: string {
+enum WorldTypeEnum: string {
     case Real = 'Real';
     case Hybrid = 'Hybrid';
     case Fiction = 'Fiction';
