@@ -40,6 +40,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property string $isbn_10
  * @property string $isbn_13
  * @property string $age_group
+ * @property string $book_slug
  * @property string $series_id
  * @property string $book_title
  * @property string $world_type

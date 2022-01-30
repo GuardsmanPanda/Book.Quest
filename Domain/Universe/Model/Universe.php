@@ -33,6 +33,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property string $id
  * @property string $world_type
  * @property string $universe_name
+ * @property string $universe_slug
  * @property string $wikipedia_url
  * @property string $universe_short_url_code
  * @property CarbonInterface $created_at

@@ -7,7 +7,6 @@
     <title>{{ config('app.name') }}</title>
     <script src="{{mix('/static/dist/app.js')}}"></script>
     <link rel="stylesheet" href="{{mix('/static/dist/app.css')}}">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 @include('layout.top-nav')

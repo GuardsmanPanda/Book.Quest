@@ -36,6 +36,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property string $id
  * @property string $world_type
  * @property string $series_name
+ * @property string $series_slug
  * @property string $universe_id
  * @property string $time_period_id
  * @property string $series_short_url_code
@@ -70,10 +71,10 @@ class Series extends Model {
 
     protected $guarded = ['id','updated_at','created_at','deleted_at'];
 
-    public function timePeriod(): BelongsTo {
-        return $this->belongsTo(TimePeriod ::class, 'time_period_id', 'id');
-    }
     public function universe(): BelongsTo {
         return $this->belongsTo(Universe ::class, 'universe_id', 'id');
+    }
+    public function timePeriod(): BelongsTo {
+        return $this->belongsTo(TimePeriod ::class, 'time_period_id', 'id');
     }
 }

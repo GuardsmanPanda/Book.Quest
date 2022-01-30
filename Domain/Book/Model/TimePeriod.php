@@ -5,7 +5,6 @@ namespace Domain\Book\Model;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Str;
 use Infrastructure\Audit\Traits\AuditChangeLogger;
 
 /**
@@ -34,7 +33,6 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property int $approximately_from_year
  * @property string $id
  * @property string $time_period_name
- * @property string $time_period_slug
  * @property string $time_period_description
  * @property CarbonInterface $created_at
  *
@@ -52,15 +50,6 @@ class TimePeriod extends Model {
     protected $casts = [
         'created_at' => 'immutable_datetime',
     ];
-
-    public static function boot(): void {
-        parent::boot();
-        static::creating(static function (self $model) {
-            if ($model->id === null) {
-                $model->id = Str::uuid()->toString();
-            }
-        });
-    }
 
     protected $guarded = ['id','updated_at','created_at','deleted_at'];
 }

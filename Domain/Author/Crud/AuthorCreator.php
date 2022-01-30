@@ -4,6 +4,7 @@ namespace Domain\Author\Crud;
 
 use Carbon\Carbon;
 use Domain\Author\Model\Author;
+use Illuminate\Support\Str;
 use Infrastructure\App\Model\Country;
 use Infrastructure\App\Model\Language;
 use Infrastructure\App\Service\ShortUrlCodeService;
@@ -27,6 +28,7 @@ class AuthorCreator {
         $author->birth_country_id = $birth_country?->id;
         $author->primary_language_id = $primary_language?->id;
         $author->author_short_url_code = ShortUrlCodeService::generateCode();
+        $author->author_slug = Str::slug($author_name);
         $author->save();
         return $author;
     }
