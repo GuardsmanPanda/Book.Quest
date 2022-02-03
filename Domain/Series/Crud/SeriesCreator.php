@@ -10,7 +10,7 @@ use Infrastructure\App\Service\ShortUrlCodeService;
 class SeriesCreator {
     public static function create(
         string $series_name,
-        string $universe_id,
+        ?string $universe_id,
         TimePeriodEnum $time_period,
     ): Series {
         $series = new Series();

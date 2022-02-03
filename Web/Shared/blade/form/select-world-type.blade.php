@@ -1,6 +1,6 @@
 <fieldset>
     <legend class="text-base font-medium text-gray-900">World Type</legend>
-    <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
+    <div class="mt-2 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
         <label class="world-type-label w-72  relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-2 ring-indigo-500"
                _="on click
                 remove .ring-2 from .world-type-label

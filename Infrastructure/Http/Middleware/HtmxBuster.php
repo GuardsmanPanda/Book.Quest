@@ -9,7 +9,7 @@ use Infrastructure\Http\Service\Req;
 use function response;
 
 class HtmxBuster {
-    public function handle(Request $request, Closure $next) {
+    public function handle(Request $request, Closure $next): mixed {
         if ($request->header('HX-target') === 'primary') {
             $prev_area = Htmx::getAreaFromHtmxHeader();
             $new_area = Req::getAreaFromPath();

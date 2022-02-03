@@ -192,6 +192,7 @@ class GenerateModels extends Command {
 
             // create relations
             $relation_created = false;
+            ksort($model['col']);
             foreach ($model['col'] as $col_name => $col_val) {
                 if (count($col_val) <= 2 || !isset($models[$col_val[2]])) {
                     continue; //skip tables without mapping

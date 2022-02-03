@@ -2,28 +2,28 @@
 
 namespace Service\Author\Crud;
 
-use Carbon\Carbon;
 use Domain\Author\Crud\AuthorCreator;
 use Domain\Author\Model\Author;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\App\Model\Country;
 use Infrastructure\App\Model\Language;
+use Infrastructure\Http\Service\Req;
 use RuntimeException;
 use Throwable;
 
 class AuthorCreationService {
-    public static function createAuthor(array $data): Author {
+    public static function createFromRequest(): Author {
         try {
             DB::beginTransaction();
             $res = AuthorCreator::create(
-                author_name: $data['author_name'],
-                goodreads_url: $data['goodreads_url'],
-                birth_year: $data['birth_year'],
-                birth_date: Carbon::parse($data['birth_date']),
-                death_date: Carbon::parse($data['death_date']),
-                birth_country: Country::find($data['birth_country_id']),
-                primary_language: Language::find($data['primary_language_id']),
+                author_name: Req::getString('author_name'),
+                birth_year: Req::getString('birth_year'),
+                birth_date: Req::getDate('birth_Date'),
+                death_date: Req::getDate('death_date'),
+                birth_country: Country::find(Req::getString('birth_country_id')),
+                primary_language: Language::find(Req::getString('primary_language_id')),
             );
+
             DB::commit();
             return $res;
         } catch (Throwable $t) {

@@ -20,7 +20,7 @@ class AuthorController extends Controller {
     }
 
     public function create(): Response {
-        AuthorCreationService::createAuthor(Req::allInput());
+        AuthorCreationService::createFromRequest();
         return Htmx::hxRedirect('/author');
     }
 }

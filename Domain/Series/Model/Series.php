@@ -71,10 +71,10 @@ class Series extends Model {
 
     protected $guarded = ['id','updated_at','created_at','deleted_at'];
 
-    public function universe(): BelongsTo {
-        return $this->belongsTo(Universe ::class, 'universe_id', 'id');
-    }
     public function timePeriod(): BelongsTo {
         return $this->belongsTo(TimePeriod ::class, 'time_period_id', 'id');
+    }
+    public function universe(): BelongsTo {
+        return $this->belongsTo(Universe ::class, 'universe_id', 'id');
     }
 }

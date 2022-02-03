@@ -13,7 +13,15 @@ return [
             'location' => 'Domain/Author/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
+        'author_uri' => [
+            'location' => 'Domain/Author/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
         'book' => [
+            'location' => 'Domain/Book/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
+        'book_uri' => [
             'location' => 'Domain/Book/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
@@ -35,7 +43,15 @@ return [
             'location' => 'Domain/Series/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
+        'series_uri' => [
+            'location' => 'Domain/Series/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
         'universe' => [
+            'location' => 'Domain/Universe/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
+        'universe_uri' => [
             'location' => 'Domain/Universe/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],

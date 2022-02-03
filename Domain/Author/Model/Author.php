@@ -37,7 +37,6 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property string $id
  * @property string $author_name
  * @property string $author_slug
- * @property string $goodreads_url
  * @property string $biography_html
  * @property string $birth_country_id
  * @property string $biography_markdown

@@ -5,7 +5,7 @@ namespace Infrastructure\Console\Kernel;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
-use Infrastructure\App\Command\PhpStan;
+use Infrastructure\Integrity\Command\PhpStan;
 use Infrastructure\Database\Command\GenerateModels;
 
 class ConsoleKernel extends Kernel {
