@@ -3,6 +3,7 @@
 namespace Infrastructure\App\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
@@ -21,12 +22,13 @@ use Illuminate\Support\Str;
  * @method static Country|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|Country lockForUpdate()
  * @method static Builder|Country select(array $columns = ['*'])
- * @method static Builder|Country with(array|string  $relations)
+ * @method static Builder|Country with(array  $relations)
  * @method static Builder|Country leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Country where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Country whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|Country whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|Country whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|Country whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Country whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Country whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Country whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Country orderBy(string $column, string $direction = 'asc')
  *
  * @property bool $country_exists
@@ -45,6 +47,9 @@ class Country extends Model {
     public $incrementing = false;
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
     ];

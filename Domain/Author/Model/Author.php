@@ -3,6 +3,7 @@
 namespace Domain\Author\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
@@ -25,12 +26,13 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Author|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|Author lockForUpdate()
  * @method static Builder|Author select(array $columns = ['*'])
- * @method static Builder|Author with(array|string  $relations)
+ * @method static Builder|Author with(array  $relations)
  * @method static Builder|Author leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Author where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Author whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|Author whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|Author whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|Author whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Author whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Author whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Author whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Author orderBy(string $column, string $direction = 'asc')
  *
  * @property int $birth_year
@@ -59,6 +61,9 @@ class Author extends Model {
     protected $keyType = 'string';
     public $incrementing = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'birth_date' => 'immutable_date',
         'created_at' => 'immutable_datetime',

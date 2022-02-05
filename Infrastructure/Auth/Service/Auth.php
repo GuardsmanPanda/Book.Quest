@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 class Auth {
     private static ?string $user_id = null;
     private static ?User $current_user = null;
+    /**
+     * @var array<string>
+     */
     private static ?array $permissions = null;
 
     public static function id(): ?string {

@@ -3,6 +3,7 @@
 namespace Infrastructure\App\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
@@ -21,12 +22,13 @@ use Illuminate\Support\Str;
  * @method static Language|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|Language lockForUpdate()
  * @method static Builder|Language select(array $columns = ['*'])
- * @method static Builder|Language with(array|string  $relations)
+ * @method static Builder|Language with(array  $relations)
  * @method static Builder|Language leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Language where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Language whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|Language whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|Language whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|Language whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Language whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Language whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Language whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Language orderBy(string $column, string $direction = 'asc')
  *
  * @property string $id
@@ -44,6 +46,9 @@ class Language extends Model {
     public $incrementing = false;
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
     ];

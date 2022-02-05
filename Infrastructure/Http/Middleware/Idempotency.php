@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Req;
+use Symfony\Component\HttpFoundation\Response;
 
 class Idempotency {
-    public function handle(Request $request, Closure $next) {
+    public function handle(Request $request, Closure $next): Response  {
         $is_write_request = Req::isWriteRequest();
 
         if ($is_write_request) {

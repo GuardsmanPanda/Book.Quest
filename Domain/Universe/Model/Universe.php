@@ -3,6 +3,7 @@
 namespace Domain\Universe\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
@@ -22,12 +23,13 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Universe|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|Universe lockForUpdate()
  * @method static Builder|Universe select(array $columns = ['*'])
- * @method static Builder|Universe with(array|string  $relations)
+ * @method static Builder|Universe with(array  $relations)
  * @method static Builder|Universe leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Universe where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Universe whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|Universe whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|Universe whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|Universe whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Universe whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Universe whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Universe whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Universe orderBy(string $column, string $direction = 'asc')
  *
  * @property string $id
@@ -48,6 +50,9 @@ class Universe extends Model {
     protected $keyType = 'string';
     public $incrementing = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
         'updated_at' => 'immutable_datetime',

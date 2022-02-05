@@ -15,13 +15,17 @@ class Extractors {
         return $arr;
     }
 
+    /**
+     * @param Model $model
+     * @return array<int, mixed>
+     */
     public static function extraPrimaryKeyArray(Model $model): array {
         $primary_key_value = $model->getKey();
         $res = [null, null, null];
         // Test the key to find out what type it is.
         if (is_int($primary_key_value)) {
             $res[0] = $primary_key_value;
-        } else if (is_string($primary_key_value) && preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $primary_key_value)) {
+        } else if (is_string($primary_key_value) && preg_match('/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/i', $primary_key_value)) {
             $res[1] = $primary_key_value;
         } else {
             $res[2] = $primary_key_value;

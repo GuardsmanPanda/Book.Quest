@@ -4,15 +4,19 @@ namespace Infrastructure\Http\Service;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use JsonException;
 use RuntimeException;
 
 class Req {
     public static ?Request $r = null;
 
-    public static function header(string $name): string|array {
+    public static function header(string $name): string {
         return self::$r?->header($name) ?? throw new RuntimeException("No Header with name: $name");
     }
 
+    /**
+     * @return array<string, array<string>>
+     */
     public static function allHeaders(): array {
         return self::$r?->header() ?? throw new RuntimeException("No Request");
     }
@@ -48,11 +52,16 @@ class Req {
         return explode('/', self::$r->path())[0];
     }
 
-    // METHODS FOR GETTING ALL THE REQUEST DATA
+    /**
+     * @return array<string, string>
+     */
     public static function allInput(): array {
         return self::$r?->all() ?? throw new RuntimeException('No Request');
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public static function allJson(): array {
         $tmp = self::$r?->json()?->all();
         return empty($tmp) ? throw new RuntimeException('No JSON') : $tmp;
@@ -107,13 +116,23 @@ class Req {
         };
     }
 
-    public static function getArray(string $name, bool $null_if_missing  = false): ?array {
+    /**
+     * @param string $name
+     * @return string[]
+     */
+    public static function getArray(string $name): array {
         if (!self::has($name)) {
-            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
+            throw new RuntimeException("No input field named: $name");
         }
         return explode(',', self::$r->get($name));
     }
 
+    /**
+     * @param string $name
+     * @param bool $null_if_missing
+     * @return array<string, mixed>|null
+     * @throws JsonException
+     */
     public static function getJson(string $name, bool $null_if_missing  = false): ?array {
         if (!self::has($name)) {
             return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");

@@ -3,6 +3,7 @@
 namespace Infrastructure\Audit\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Domain\User\Model\User;
 use Illuminate\Database\Eloquent\Casts\ArrayObject;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
@@ -24,12 +25,13 @@ use Illuminate\Database\Query\Builder;
  * @method static AuditChange|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|AuditChange lockForUpdate()
  * @method static Builder|AuditChange select(array $columns = ['*'])
- * @method static Builder|AuditChange with(array|string  $relations)
+ * @method static Builder|AuditChange with(array  $relations)
  * @method static Builder|AuditChange leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|AuditChange where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|AuditChange whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|AuditChange whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|AuditChange whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|AuditChange whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|AuditChange whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|AuditChange whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|AuditChange whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|AuditChange orderBy(string $column, string $direction = 'asc')
  *
  * @property int $id
@@ -57,6 +59,9 @@ class AuditChange extends Model {
     protected $dateFormat = 'Y-m-d H:i:sO';
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
         'record_as_json' => AsArrayObject::class,

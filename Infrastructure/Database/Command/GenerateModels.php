@@ -55,6 +55,7 @@ class GenerateModels extends Command {
             $headers = new Set('string');
             $headers->add('use Illuminate\Database\Query\Builder;');
             $headers->add('use Illuminate\Database\Eloquent\Model;');
+            $headers->add('use Closure;');
             if (array_key_exists('deleted_at', $cc)) {
                 $headers->add('use Illuminate\Database\Eloquent\SoftDeletes;');
             }
@@ -102,7 +103,7 @@ class GenerateModels extends Command {
                     if (!isset($models[$col_val[2]])) {
                         continue; //skip tables without mapping
                     }
-                    $this->info($model['class'] . ' -> ' . $col_val[1] . ' foreign key to ' . $col_val[2] . ' -> ' . $col_val[3]);
+                    $this->info($model['class'] . ' -> foreign key to ' . $col_val[2] . ' -> ' . $col_val[3]);
                     if ($col_val[2] !== $table_name) {
                         $headers->add('use ' . $models[$col_val[2]]['namespace'].'\\'. $models[$col_val[2]]['class'] .';');
                     }
@@ -169,6 +170,9 @@ class GenerateModels extends Command {
             $content .= PHP_EOL;
 
             if (count($casts) > 0) {
+                $content .= "    /**" . PHP_EOL;
+                $content .= "     * @var array<string, string>" . PHP_EOL;
+                $content .= "     */" . PHP_EOL;
                 $content .= "    protected \$casts = [" . PHP_EOL;
                 foreach ($casts as $cast) {
                     $content .= "        '" . $cast[0] . "' => " . $cast[1] . "," . PHP_EOL;
@@ -240,12 +244,13 @@ class GenerateModels extends Command {
         $content .= " * @method static $class_name|null firstWhere(string \$column, string \$operator = null, string \$value = null, string \$boolean = 'and')" . PHP_EOL;
         $content .= " * @method static Builder|$class_name lockForUpdate()" . PHP_EOL;
         $content .= " * @method static Builder|$class_name select(array \$columns = ['*'])" . PHP_EOL;
-        $content .= " * @method static Builder|$class_name with(array|string  \$relations)" . PHP_EOL;
+        $content .= " * @method static Builder|$class_name with(array  \$relations)" . PHP_EOL;
         $content .= " * @method static Builder|$class_name leftJoin(string \$table, string \$first, string \$operator = null, string \$second = null)" . PHP_EOL;
         $content .= " * @method static Builder|$class_name where(string \$column, string \$operator = null, string \$value = null, string \$boolean = 'and')" . PHP_EOL;
-        $content .= " * @method static Builder|$class_name whereIn(string \$column, \$values, \$boolean = 'and', \$not = false)" . PHP_EOL;
-        $content .= " * @method static Builder|$class_name whereNull(string|array \$columns, bool \$boolean = 'and')" . PHP_EOL;
-        $content .= " * @method static Builder|$class_name whereNotNull(string|array \$columns, bool \$boolean = 'and')" . PHP_EOL;
+        $content .= " * @method static Builder|$class_name whereIn(string \$column, array \$values, string \$boolean = 'and', bool \$not = false)" . PHP_EOL;
+        $content .= " * @method static Builder|$class_name whereHas(string \$relation, Closure \$callback, string \$operator = '>=', int \$count = 1)" . PHP_EOL;
+        $content .= " * @method static Builder|$class_name whereNull(string|array \$columns, string \$boolean = 'and')" . PHP_EOL;
+        $content .= " * @method static Builder|$class_name whereNotNull(string|array \$columns, string \$boolean = 'and')" . PHP_EOL;
         $content .= " * @method static Builder|$class_name orderBy(string \$column, string \$direction = 'asc')" . PHP_EOL;
         $content .= " *" . PHP_EOL;
         return $content;

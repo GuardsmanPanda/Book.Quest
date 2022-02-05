@@ -12,7 +12,7 @@ class ConsoleKernel extends Kernel {
     /**
      * The Artisan commands provided by your application.
      *
-     * @var array
+     * @var array<class-string>
      */
     protected $commands = [
         GenerateModels::class,

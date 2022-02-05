@@ -3,6 +3,7 @@
 namespace Domain\Book\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Domain\Book\Model\Category;
 use Domain\Book\Model\TimePeriod;
 use Illuminate\Database\Eloquent\Model;
@@ -25,12 +26,13 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Book|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|Book lockForUpdate()
  * @method static Builder|Book select(array $columns = ['*'])
- * @method static Builder|Book with(array|string  $relations)
+ * @method static Builder|Book with(array  $relations)
  * @method static Builder|Book leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Book where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Book whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|Book whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|Book whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|Book whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Book whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Book whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Book whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Book orderBy(string $column, string $direction = 'asc')
  *
  * @property int $page_count
@@ -69,6 +71,9 @@ class Book extends Model {
     protected $keyType = 'string';
     public $incrementing = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
         'publication_date' => 'immutable_date',

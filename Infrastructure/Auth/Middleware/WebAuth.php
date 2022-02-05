@@ -6,11 +6,12 @@ use Closure;
 use Illuminate\Http\Request;
 use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Req;
+use Symfony\Component\HttpFoundation\Response;
 use function abort_unless;
 use function session;
 
 class WebAuth {
-    public function handle(Request $request, Closure $next) {
+    public function handle(Request $request, Closure $next): Response {
         if (Req::isWriteRequest()) { // Check CSRF token if applicable.
             $token = $request->input('_token')
                 ?? $request->header('X-CSRF-TOKEN')

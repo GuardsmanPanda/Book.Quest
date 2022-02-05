@@ -6,10 +6,11 @@ use Closure;
 use Illuminate\Http\Request;
 use Infrastructure\Http\Service\Htmx;
 use Infrastructure\Http\Service\Req;
+use Symfony\Component\HttpFoundation\Response;
 use function response;
 
 class HtmxBuster {
-    public function handle(Request $request, Closure $next): mixed {
+    public function handle(Request $request, Closure $next): Response {
         if ($request->header('HX-target') === 'primary') {
             $prev_area = Htmx::getAreaFromHtmxHeader();
             $new_area = Req::getAreaFromPath();

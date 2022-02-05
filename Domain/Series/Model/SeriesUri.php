@@ -3,6 +3,8 @@
 namespace Domain\Series\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
+use Domain\App\Model\Uri;
 use Domain\Series\Model\Series;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,12 +25,13 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static SeriesUri|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|SeriesUri lockForUpdate()
  * @method static Builder|SeriesUri select(array $columns = ['*'])
- * @method static Builder|SeriesUri with(array|string  $relations)
+ * @method static Builder|SeriesUri with(array  $relations)
  * @method static Builder|SeriesUri leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|SeriesUri where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|SeriesUri whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|SeriesUri whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|SeriesUri whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|SeriesUri whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|SeriesUri whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|SeriesUri whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|SeriesUri whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|SeriesUri orderBy(string $column, string $direction = 'asc')
  *
  * @property int $id
@@ -37,6 +40,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @property string $series_uri
  * @property string $series_uri_description
  * @property CarbonInterface $created_at
+ * @property Uri $uri
  * @property Series $series
  *
  * AUTO GENERATED FILE DO NOT MODIFY
@@ -48,6 +52,9 @@ class SeriesUri extends Model {
     protected $dateFormat = 'Y-m-d H:i:sO';
     public $timestamps = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
     ];
@@ -56,5 +63,8 @@ class SeriesUri extends Model {
 
     public function series(): BelongsTo {
         return $this->belongsTo(Series ::class, 'series_id', 'id');
+    }
+    public function uri(): BelongsTo {
+        return $this->belongsTo(Uri ::class, 'uri_id', 'id');
     }
 }

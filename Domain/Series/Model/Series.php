@@ -3,6 +3,7 @@
 namespace Domain\Series\Model;
 
 use Carbon\CarbonInterface;
+use Closure;
 use Domain\Book\Model\TimePeriod;
 use Domain\Universe\Model\Universe;
 use Illuminate\Database\Eloquent\Model;
@@ -25,12 +26,13 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Series|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Builder|Series lockForUpdate()
  * @method static Builder|Series select(array $columns = ['*'])
- * @method static Builder|Series with(array|string  $relations)
+ * @method static Builder|Series with(array  $relations)
  * @method static Builder|Series leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Series where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Series whereIn(string $column, $values, $boolean = 'and', $not = false)
- * @method static Builder|Series whereNull(string|array $columns, bool $boolean = 'and')
- * @method static Builder|Series whereNotNull(string|array $columns, bool $boolean = 'and')
+ * @method static Builder|Series whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Series whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Series whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Series whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Series orderBy(string $column, string $direction = 'asc')
  *
  * @property string $id
@@ -55,6 +57,9 @@ class Series extends Model {
     protected $keyType = 'string';
     public $incrementing = false;
 
+    /**
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'immutable_datetime',
         'updated_at' => 'immutable_datetime',
