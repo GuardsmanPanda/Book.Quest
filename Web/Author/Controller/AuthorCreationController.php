@@ -10,12 +10,12 @@ use Integration\Goodreads\Client\AuthorScraper;
 use Service\Author\Crud\AuthorCreationService;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthorController extends Controller {
+class AuthorCreationController extends Controller {
     public function createDialog(): View {
-        $goodreads_url = Req::getString('goodreads_url', true);
-        return view('author::dialog.add-author', [
-            'goodreads_url' => $goodreads_url,
-            'goodreads_data' => $goodreads_url === null ? [] : AuthorScraper::getDataFromAuthorURL($goodreads_url),
+        $goodreads_uri = Req::has('goodreads_uri') ? Req::getString('goodreads_uri') : null;
+        return view('author::create.create-author', [
+            'goodreads_uri' => $goodreads_uri,
+            'goodreads_data' => $goodreads_uri === null ? [] : AuthorScraper::getDataFromAuthorURL($goodreads_uri),
         ]);
     }
 

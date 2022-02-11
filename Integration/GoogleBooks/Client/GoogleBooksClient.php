@@ -5,6 +5,10 @@ namespace Integration\GoogleBooks\Client;
 use Illuminate\Support\Facades\Http;
 
 class GoogleBooksClient {
+    /**
+     * @param string $id
+     * @return array<string, mixed>
+     */
     public static function lookupBook(string $id): array {
         $resp = Http::get("https://www.googleapis.com/books/v1/volumes/" . $id)->json();
         $vol = $resp['volumeInfo'];
@@ -26,6 +30,10 @@ class GoogleBooksClient {
         return $tmp;
     }
 
+    /**
+     * @param string $query
+     * @return array<int, array<string,string>>
+     */
     public static function searchBook(string $query): array {
         $query = urlencode($query);
         $resp = Http::get("https://www.googleapis.com/books/v1/volumes?q=$query&showPreorders=true&langRestrict=en")->json();

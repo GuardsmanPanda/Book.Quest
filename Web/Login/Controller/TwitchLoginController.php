@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Infrastructure\Http\Service\Req;
 use Service\User\Service\UserFromTwitchDataService;
 use Web\Login\Utility\LoginUtility;
 
@@ -21,10 +22,10 @@ class TwitchLoginController extends Controller {
     // Callback from Twitch oauth2 endpoint
     public function callback(): RedirectResponse {
         $state = session()->pull('oauth2state');
-        if ($state === null || $state !== request('state')) {
+        if ($state === null || $state !== Req::getString('state')) {
             abort(401, 'Invalid state');
         }
-        $code = request('code');
+        $code = Req::getString('code');
         $url = "https://id.twitch.tv/oauth2/token?client_id=" . config('app-settings.twitch_client_id') . "&client_secret=" . config('app-settings.twitch_client_secret') . "&code=$code&grant_type=authorization_code&redirect_uri=" . config('app.url') . "login/twitch/callback";
         $response = Http::post($url);
         if ($response->failed()) {

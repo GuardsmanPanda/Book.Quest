@@ -6,6 +6,20 @@ use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
 
 class AuditChangeCreator {
+    /**
+     * @param string $table_name
+     * @param string $change_type
+     * @param int|null $record_id
+     * @param string|null $record_uuid
+     * @param string|null $record_identifier
+     * @param string|null $column_name
+     * @param string|null $old_value
+     * @param string|null $new_value
+     * @param bool $is_soft_deletion
+     * @param array<string, mixed>|null $record_data
+     * @return void
+     * @throws \JsonException
+     */
     public static function create(
         string $table_name,
         string $change_type,

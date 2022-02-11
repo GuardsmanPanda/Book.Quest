@@ -218,6 +218,13 @@ class GenerateModels extends Command {
     }
 
 
+    /**
+     * @param string $namespace
+     * @param string $class_name
+     * @param string[] $headers
+     * @param string $primary_key_type
+     * @return string
+     */
     private function insertTopOfClass(string $namespace, string $class_name, array $headers, string $primary_key_type = 'int'): string {
         sort($headers);
         $content = "<?php" . PHP_EOL . PHP_EOL . 'namespace ' . $namespace . ';' . PHP_EOL . PHP_EOL;
@@ -295,6 +302,11 @@ class GenerateModels extends Command {
         };
     }
 
+    /**
+     * @param string $name
+     * @param string $postgres_type
+     * @return ?string[]
+     */
     private function postgresTypeToEloquentCast(string $name, string $postgres_type): ?array {
         if (str_starts_with($name, 'encrypted_')) {
             return [$name, "'encrypted'"];

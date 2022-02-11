@@ -14,6 +14,6 @@
                    pattern="https://en.(m.)?wikipedia.org/wiki/.*"
             />
         </div>
-        @include('form.select-world-type')
+        @include('form.select-world-type', ['selected' =>'Fictional'])
     </div>
 </x-dialog.create-resource>

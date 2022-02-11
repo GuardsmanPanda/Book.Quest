@@ -1,7 +1,7 @@
-<fieldset>
+<fieldset id="select-world-type" @if($oob ?? false) hx-swap-oob="true" @endif>
     <legend class="text-base font-medium text-gray-900">World Type</legend>
     <div class="mt-2 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
-        <label class="world-type-label w-72  relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-2 ring-indigo-500"
+        <label class="world-type-label w-72  relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-indigo-500 {{ $selected === 'Real' ? 'ring-2' : ''}}"
                _="on click
                 remove .ring-2 from .world-type-label
                 add .ring-2 to me
@@ -10,11 +10,11 @@
                 add .invisible to #world-type-fictional-checkbox
                 ">
             <input type="radio" name="world_type" value="Real" class="sr-only" aria-labelledby="real-label"
-                   aria-describedby="real-description" checked>
+                   aria-describedby="real-description" {{ $selected === 'Real' ? 'checked' : ''}}>
             <div class="flex-1 flex flex-col">
                 <div class="flex justify-between">
                     <span id="real-label" class="block text-sm font-medium text-gray-900">Real</span>
-                    <svg id="world-type-real-checkbox" class="h-5 w-5 text-indigo-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    <svg id="world-type-real-checkbox" class="h-5 w-5 text-indigo-600  {{ $selected !== 'Real' ? 'invisible' : ''}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                          fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -30,7 +30,7 @@
             <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
         </label>
 
-        <label class="world-type-label w-72 relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-indigo-500"
+        <label class="world-type-label w-72 relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-indigo-500 {{ $selected === 'Hybrid' ? 'ring-2' : ''}}"
                _="on click
                 remove .ring-2 from .world-type-label
                 add .ring-2 to me
@@ -39,11 +39,11 @@
                 add .invisible to #world-type-fictional-checkbox
                 ">
             <input type="radio" name="world_type" value="Hybrid" class="sr-only" aria-labelledby="hybrid-label"
-                   aria-describedby="hybrid-description">
+                   aria-describedby="hybrid-description"  {{ $selected === 'Hybrid' ? 'checked' : ''}}>
             <div class="flex-1 flex flex-col">
                 <div class="flex justify-between">
                     <span id="hybrid-label" class="block text-sm font-medium text-gray-900">Hybrid</span>
-                    <svg id="world-type-hybrid-checkbox" class="h-5 w-5 text-indigo-600 invisible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    <svg id="world-type-hybrid-checkbox" class="h-5 w-5 text-indigo-600 {{ $selected !== 'Hybrid' ? 'invisible' : ''}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                          fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -59,7 +59,7 @@
             <div class="absolute -inset-px rounded-lg border-2 pointer-events-none" aria-hidden="true"></div>
         </label>
 
-        <label class="world-type-label w-72 relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-indigo-500"
+        <label class="world-type-label w-72 relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none ring-indigo-500 {{ $selected === 'Fictional' ? 'ring-2' : ''}}"
                 _="on click
                 remove .ring-2 from .world-type-label
                 add .ring-2 to me
@@ -68,11 +68,11 @@
                 remove .invisible from #world-type-fictional-checkbox
                 ">
             <input type="radio" name="world_type" value="Fictional" class="sr-only" aria-labelledby="fictional-label"
-                   aria-describedby="fictional-description">
+                   aria-describedby="fictional-description"  {{ $selected === 'Fictional' ? 'checked' : ''}}>
             <div class="flex-1 flex flex-col">
                 <div class="flex justify-between">
                     <span id="fictional-label" class="block text-sm font-medium text-gray-900">Fictional</span>
-                    <svg id="world-type-fictional-checkbox" class="h-5 w-5 text-indigo-600 invisible" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    <svg id="world-type-fictional-checkbox" class="h-5 w-5 text-indigo-600 {{ $selected !== 'Fictional' ? 'invisible' : ''}}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                          fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"

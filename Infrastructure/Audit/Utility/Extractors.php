@@ -5,6 +5,10 @@ namespace Infrastructure\Audit\Utility;
 use Illuminate\Database\Eloquent\Model;
 
 class Extractors {
+    /**
+     * @param Model $model
+     * @return array<string, string>
+     */
     public static function extractAuditColumns(Model $model): array {
         $arr = $model->toArray();
         foreach ($arr as $key => $value) {

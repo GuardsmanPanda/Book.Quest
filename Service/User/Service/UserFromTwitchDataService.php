@@ -6,6 +6,10 @@ use Domain\User\Crud\UserCreator;
 use Domain\User\Model\User;
 
 class UserFromTwitchDataService {
+    /**
+     * @param array<string, mixed> $user_data
+     * @return User
+     */
     public static function findOrCreate(array $user_data): User {
         $user = User::firstWhere('twitch_id', $user_data['id']);
         if ($user === null) {

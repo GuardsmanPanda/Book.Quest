@@ -8,8 +8,10 @@
 
                   Current: "text-gray-300", Default: "text-gray-400 group-hover:text-gray-300"
                 -->
-                <svg class="text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <svg class="text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                 </svg>
                 <span class="flex-1">
           Narrator Home
@@ -20,11 +22,16 @@
         </nav>
     </div>
     <div class="flex-shrink-0 flex flex-col gap-2">
+        @if(\Infrastructure\Auth\Service\Auth::hasPermission('narrator__create'))
+            @include('layout.component.menu-button', ['text' => 'Add Narrator', 'url' => '/narrator/create/dialog'])
+        @endif
         <div class="bg-gray-700 p-2">
             <a href="#" class="flex-shrink-0 w-full group block p-2">
                 <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500 group-hover:text-gray-300 mr-1 flex-shrink-0 h-8 w-8"
-                         fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="text-gray-500 group-hover:text-gray-300 mr-1 flex-shrink-0 h-8 w-8"
+                         fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         {!! config("icons.cube") !!}
                     </svg>
                     <p class="text-cyan-400 font-medium text-3xl">372</p>

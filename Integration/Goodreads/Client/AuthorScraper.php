@@ -7,6 +7,10 @@ use DOMDocument;
 use Illuminate\Support\Facades\Http;
 
 class AuthorScraper {
+    /**
+     * @param string $url
+     * @return array<string, string>
+     */
     public static function getDataFromAuthorURL(string $url): array {
         $res = [];
         $doc = new DOMDocument();

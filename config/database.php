@@ -39,6 +39,10 @@ return [
         'language' => [
             'location' => 'Infrastructure/App/Model',
         ],
+        'narrator' => [
+            'location' => 'Domain/Narrator/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
         'series' => [
             'location' => 'Domain/Series/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],

@@ -4,21 +4,34 @@ namespace Infrastructure\Http\Service;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use Infrastructure\Integrity\Service\ValidateAndParseValue;
 use JsonException;
 use RuntimeException;
 
 class Req {
     public static ?Request $r = null;
 
+    public static function hasHeader(string $name): bool {
+        return self::$r?->hasHeader($name) ?? false;
+    }
+
     public static function header(string $name): string {
-        return self::$r?->header($name) ?? throw new RuntimeException("No Header with name: $name");
+        $value = self::$r?->header($name);
+        if (!is_string($value)) {
+            throw new RuntimeException("Header '$name' is missing or not a string");
+        }
+        return $value;
     }
 
     /**
      * @return array<string, array<string>>
      */
     public static function allHeaders(): array {
-        return self::$r?->header() ?? throw new RuntimeException("No Request");
+        $value = self::$r?->header();
+        if (!is_array($value)) {
+            throw new RuntimeException('Headers not found');
+        }
+        return  $value;
     }
 
     public static function method(): string {
@@ -38,7 +51,7 @@ class Req {
     }
 
     public static function ipCountry(): string {
-        return  self::$r?->header('CF_IPCOUNTRY') ?? 'XX';
+        return self::hasHeader('CF_IPCOUNTRY') ? self::header('CF_IPCOUNTRY') : 'XX';
     }
 
     public static function isWriteRequest(): bool {
@@ -76,44 +89,36 @@ class Req {
     }
 
 
-    public static function getString(string $name, bool $null_if_missing  = false): ?string {
+    public static function getString(string $name): ?string {
         if (!self::has($name)) {
-            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
+            throw new RuntimeException("No input field named: $name");
         }
-        return self::$r->get($name);
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseString($val);
     }
 
-    public static function getInt(string $name, bool $null_if_missing  = false): ?int {
+    public static function getInt(string $name): ?int {
         if (!self::has($name)) {
-            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
+            throw new RuntimeException("No input field named: $name");
         }
-        $value = self::$r->get($name);
-        if (!ctype_digit($value)) {
-            throw new RuntimeException("Input field named: $name is not an integer, value: $value");
-        }
-        return (int)$value;
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseInt($val);
     }
 
-    public static function getFloat(string $name, bool $null_if_missing  = false): ?float {
+    public static function getFloat(string $name): ?float {
         if (!self::has($name)) {
-            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
+            throw new RuntimeException("No input field named: $name");
         }
-        $value = self::$r->get($name);
-        if (!is_numeric($value)) {
-            throw new RuntimeException("Input field named: $name is not a float, value: $value");
-        }
-        return (float)self::$r->get($name);
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseFloat($val);
     }
 
-    public static function getBool(string $name, bool $null_if_missing  = false): ?bool {
+    public static function getBool(string $name): ?bool {
         if (!self::has($name)) {
-            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
+            throw new RuntimeException("No input field named: $name");
         }
-        return match (self::$r->get($name)) {
-            'true', true => true,
-            'false', false => false,
-            default => throw new RuntimeException("Invalid boolean value: " . self::$r->get($name))
-        };
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseBool($val);
     }
 
     /**
@@ -133,37 +138,26 @@ class Req {
      * @return array<string, mixed>|null
      * @throws JsonException
      */
-    public static function getJson(string $name, bool $null_if_missing  = false): ?array {
+    public static function getJson(string $name): ?array {
         if (!self::has($name)) {
-            return $null_if_missing ? null :  throw new RuntimeException("No input field named: $name");
+            throw new RuntimeException("No input field named: $name");
         }
         return json_decode(self::$r->get($name), false, 512, JSON_THROW_ON_ERROR);
     }
 
-    public static function getDate(string $name, bool $null_if_missing  = false): ?CarbonImmutable {
-        $text = self::getString(name: $name, null_if_missing: $null_if_missing);
-        if ($text === null) {
-            return null;
+    public static function getDate(string $name): ?CarbonImmutable {
+        if (!self::has($name)) {
+            throw new RuntimeException("No input field named: $name");
         }
-        $arr = explode('-', $text);
-        if (count($arr) !== 3 || strlen($arr[0]) !== 4 || strlen($arr[1]) !== 2 || strlen($arr[2]) !== 2) {
-            throw new RuntimeException("Invalid date format: $text, must be YYYY-MM-DD");
-        }
-        $year = (int)$arr[0];
-        $month = (int)$arr[1];
-        $day = (int)$arr[2];
-        if (!checkdate(month: $month, day: $day, year: $year)) {
-            throw new RuntimeException("Invalid date: $text");
-        }
-        return CarbonImmutable::createFromDate(year: $year, month: $month, day: $day);
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseDate($val);
     }
 
-    public static function getDateTime(string $name, bool $null_if_missing  = false): ?CarbonImmutable {
-        $text = self::getString(name: $name, null_if_missing: $null_if_missing);
-        if ($text === null) {
-            return null;
+    public static function getDateTime(string $name): ?CarbonImmutable {
+        if (!self::has($name)) {
+            throw new RuntimeException("No input field named: $name");
         }
-        //TODO: finish this
-        return self::$r->get($name);
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseDate($val);
     }
 }

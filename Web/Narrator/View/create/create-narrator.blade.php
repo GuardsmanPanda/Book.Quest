@@ -1,33 +1,32 @@
-<x-dialog.create-resource endpoint="/author" title="Add Author">
+<x-dialog.create-resource endpoint="/narrator/create" title="Add Narrator">
     <div class="flex flex-col gap-8 pb-4">
         <div>
-            <label for="goodreads_url" class="block text-sm font-medium text-gray-800">Goodreads URL</label>
-            <input type="url" name="goodreads_url" id="goodreads_url" value="{{$goodreads_url}}"
+            <label for="wikipedia_uri" class="block text-sm font-medium text-gray-800">Wikipedia URI</label>
+            <input type="url" name="goodreads_uri" id="goodreads_uri"
                    class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
-                   placeholder="https://www.goodreads.com/author/show/..." pattern="https://www.goodreads.com/author/show/[0-9]+.*"
-                   size="60" hx-get="/author/dialog-create" hx-trigger="keyup changed delay:500ms" hx-target="#pop"/>
+                   placeholder="https://en.wikipedia.org/wiki/..." pattern="https://en.wikipedia.org/wiki/.+" size="60"/>
         </div>
         <div class="flex flex-col gap-3">
             <div class="w-full">
-                <label for="author_name" class="block text-sm font-medium text-gray-800">Author Name</label>
-                <input type="text" name="author_name" id="author_name"   value="{{$goodreads_data['author_name'] ?? ''}}"
+                <label for="narrator_name" class="block text-sm font-medium text-gray-800">Narrator Name</label>
+                <input type="text" name="narrator_name" id="narrator_name"
                        class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
                        required/>
             </div>
             <div class="grid grid-cols-3 gap-2 w-full">
                 <div class="">
                     <label for="birth_year" class="block text-sm font-medium text-gray-800">Birth Year</label>
-                    <input type="number" name="birth_year" id="birth_year" value="{{$goodreads_data['birth_year'] ?? ''}}"
+                    <input type="number" name="birth_year" id="birth_year"
                            class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"/>
                 </div>
                 <div class="">
                     <label for="birth_date" class="block text-sm font-medium text-gray-800">Birth Date</label>
-                    <input type="date" name="birth_date" id="birth_date" value="{{$goodreads_data['birth_date'] ?? ''}}"
+                    <input type="date" name="birth_date" id="birth_date"
                            class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"/>
                 </div>
                 <div class="">
                     <label for="death_date" class="block text-sm font-medium text-gray-8">Death Date</label>
-                    <input type="date" name="death_date" id="death_date" value="{{$goodreads_data['death_date'] ?? ''}}"
+                    <input type="date" name="death_date" id="death_date"
                            class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"/>
                 </div>
             </div>

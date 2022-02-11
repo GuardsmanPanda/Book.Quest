@@ -1,0 +1,38 @@
+<?php
+
+namespace Web\Series\Controller;
+
+use Domain\Universe\Model\Universe;
+use Illuminate\Contracts\View\View;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Infrastructure\Http\Service\Htmx;
+use Infrastructure\Http\Service\Req;
+use Service\Series\Crud\SeriesCreatorService;
+use Symfony\Component\HttpFoundation\Response;
+
+class SeriesCreationController extends Controller {
+    public function createDialog(): View {
+        return view('series::create.create-series');
+    }
+
+    public function universeSearch(): View {
+        $search = Req::getString('universe_search');
+        $result = DB::select("
+            SELECT u.id, u.universe_name, u.world_type
+            FROM universe u
+            WHERE u.universe_name ILIKE ?
+            ORDER BY u.universe_name LIMIT 10
+        ", ['%'.$search.'%']);
+        return view('series::create.universe-search', ['result' => $result]);
+    }
+
+    public function universeSearchResult(Universe $universe): View {
+        return view('series::create.universe-search-result', ['universe' => $universe]);
+    }
+
+    public function create(): Response {
+        $series = SeriesCreatorService::createFromRequest();
+        return Htmx::hxRedirect('/series/show/' . $series->series_short_url_code . '/' . $series->series_slug);
+    }
+}

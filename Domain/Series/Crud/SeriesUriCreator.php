@@ -17,7 +17,7 @@ class SeriesUriCreator {
         $uu->series_id = $series->id;
         $uu->uri_id = $uri->id;
         $uu->series_uri = $series_uri;
-        $uu->series_uri_description = $series_uri_description;
+        $uu->series_uri_description = $series_uri_description ?? $uri->uri_title;
         $uu->save();
         return $uu;
     }
