@@ -29,17 +29,17 @@ return [
             'location' => 'Domain/Book/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
-        'time_period' => [
-            'location' => 'Domain/Book/Model',
-            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
-        ],
         'country' => [
-            'location' => 'Infrastructure/App/Model',
+            'location' => 'Domain/App/Model',
         ],
         'language' => [
-            'location' => 'Infrastructure/App/Model',
+            'location' => 'Domain/App/Model',
         ],
         'narrator' => [
+            'location' => 'Domain/Narrator/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
+        'narrator_uri' => [
             'location' => 'Domain/Narrator/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
@@ -49,6 +49,10 @@ return [
         ],
         'series_uri' => [
             'location' => 'Domain/Series/Model',
+            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
+        ],
+        'time_period' => [
+            'location' => 'Domain/Book/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
         'universe' => [

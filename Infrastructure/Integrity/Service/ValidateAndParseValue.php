@@ -4,10 +4,11 @@ namespace Infrastructure\Integrity\Service;
 
 use Carbon\CarbonImmutable;
 use InvalidArgumentException;
+use JsonException;
 
 class ValidateAndParseValue {
     public static function parseInt(mixed $value): int {
-        if (is_int($value) ||$value(is_string($value) && ctype_digit($value))) {
+        if (is_int($value) || (is_string($value) && ctype_digit($value))) {
             return (int) $value;
         }
         throw new InvalidArgumentException("$value is not an integer, type: " . gettype($value));
@@ -27,11 +28,22 @@ class ValidateAndParseValue {
         throw new InvalidArgumentException("$value is not a string, type: " . gettype($value));
     }
 
+    public static function parseJson(string|array $value): array {
+        if (is_array($value)) {
+            return $value;
+        }
+        try {
+            return json_decode($value, false, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException $e) {
+            abort(400, "Invalid JSON: " . $e->getMessage());
+        }
+    }
+
     public static function parseBool(mixed $value): bool {
         return match ($value) {
             'true', true => true,
             'false', false => false,
-            default => throw new InvalidArgumentException("$value is not a float, type: " . gettype($value)),
+            default => throw new InvalidArgumentException("$value is not a bool, type: " . gettype($value)),
         };
     }
 
@@ -53,6 +65,12 @@ class ValidateAndParseValue {
             throw new InvalidArgumentException("Invalid date: $value");
         }
         return CarbonImmutable::createFromDate(year: $year, month: $month, day: $day);
+    }
 
+    public static function parseArray(mixed $value): array {
+        if (is_array($value)) {
+            return $value;
+        }
+        throw new InvalidArgumentException("$value is not array, type: " . gettype($value));
     }
 }

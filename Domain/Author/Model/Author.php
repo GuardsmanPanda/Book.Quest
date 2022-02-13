@@ -4,12 +4,12 @@ namespace Domain\Author\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
+use Domain\App\Model\Country;
+use Domain\App\Model\Language;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
-use Infrastructure\App\Model\Country;
-use Infrastructure\App\Model\Language;
 use Infrastructure\Audit\Traits\AuditChangeLogger;
 
 /**

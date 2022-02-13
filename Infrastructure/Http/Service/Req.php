@@ -5,7 +5,6 @@ namespace Infrastructure\Http\Service;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Infrastructure\Integrity\Service\ValidateAndParseValue;
-use JsonException;
 use RuntimeException;
 
 class Req {
@@ -123,26 +122,26 @@ class Req {
 
     /**
      * @param string $name
-     * @return string[]
+     * @return array<string, mixed>|null
      */
-    public static function getArray(string $name): array {
+    public static function getArray(string $name): ?array {
         if (!self::has($name)) {
             throw new RuntimeException("No input field named: $name");
         }
-        return explode(',', self::$r->get($name));
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseArray($val);
     }
 
     /**
      * @param string $name
-     * @param bool $null_if_missing
      * @return array<string, mixed>|null
-     * @throws JsonException
      */
     public static function getJson(string $name): ?array {
         if (!self::has($name)) {
             throw new RuntimeException("No input field named: $name");
         }
-        return json_decode(self::$r->get($name), false, 512, JSON_THROW_ON_ERROR);
+        $val = self::$r->get($name);
+        return $val === null ? null : ValidateAndParseValue::parseJson($val);
     }
 
     public static function getDate(string $name): ?CarbonImmutable {

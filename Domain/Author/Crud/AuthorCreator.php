@@ -3,10 +3,10 @@
 namespace Domain\Author\Crud;
 
 use Carbon\CarbonInterface;
+use Domain\App\Model\Country;
+use Domain\App\Model\Language;
 use Domain\Author\Model\Author;
 use Illuminate\Support\Str;
-use Infrastructure\App\Model\Country;
-use Infrastructure\App\Model\Language;
 use Infrastructure\App\Service\ShortUrlCodeService;
 
 class AuthorCreator {

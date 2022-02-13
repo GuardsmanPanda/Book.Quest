@@ -7,12 +7,12 @@ use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
-use Infrastructure\Auth\Middleware\Permission;
-use Infrastructure\Auth\Middleware\WebAuth;
 use Infrastructure\Http\Middleware\HtmxBuster;
 use Infrastructure\Http\Middleware\Idempotency;
 use Infrastructure\Http\Middleware\Initiate;
+use Infrastructure\Http\Middleware\Permission;
 use Infrastructure\Http\Middleware\TrimStrings;
+use Infrastructure\Http\Middleware\WebAuth;
 
 class HttpKernel extends Kernel {
     /**

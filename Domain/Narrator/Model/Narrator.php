@@ -4,12 +4,12 @@ namespace Domain\Narrator\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
+use Domain\App\Model\Country;
+use Domain\App\Model\Language;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
-use Infrastructure\App\Model\Country;
-use Infrastructure\App\Model\Language;
 use Infrastructure\Audit\Traits\AuditChangeLogger;
 
 /**
@@ -35,7 +35,6 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Builder|Narrator whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Narrator orderBy(string $column, string $direction = 'asc')
  *
- * @property int $birth_year
  * @property string $id
  * @property string $narrator_name
  * @property string $narrator_slug

@@ -2,11 +2,11 @@
 
 namespace Service\Author\Crud;
 
+use Domain\App\Model\Country;
+use Domain\App\Model\Language;
 use Domain\Author\Crud\AuthorCreator;
 use Domain\Author\Model\Author;
 use Illuminate\Support\Facades\DB;
-use Infrastructure\App\Model\Country;
-use Infrastructure\App\Model\Language;
 use Infrastructure\Http\Service\Req;
 use RuntimeException;
 use Throwable;

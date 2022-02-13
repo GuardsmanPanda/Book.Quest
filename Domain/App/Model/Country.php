@@ -1,6 +1,6 @@
 <?php
 
-namespace Infrastructure\App\Model;
+namespace Domain\App\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
