@@ -20,7 +20,8 @@
         default => 'layout.menu-book'
     })
     </div>
-    <div id="primary" {!!$primary_hx!!}  class="flex-1 h-full">
+    <div id="primary" class="flex-1 h-full">
+        {!! $content !!}
     </div>
 </div>
 

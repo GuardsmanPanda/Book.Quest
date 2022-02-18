@@ -11,10 +11,10 @@ use function response;
 
 class HtmxBuster {
     public function handle(Request $request, Closure $next): Response {
+        $res = $next($request);
         if ($request->header('HX-target') === 'primary') {
             $prev_area = Htmx::getAreaFromHtmxHeader();
             $new_area = Req::getAreaFromPath();
-            $res = $next($request);
             if ($new_area !== $prev_area) {
                 $menu = match ($new_area) {
                     'author', 'book', 'map', 'narrator', 'series', 'universe' => view("layout.menu-$new_area")->render(),
@@ -26,15 +26,11 @@ class HtmxBuster {
             }
             return $res;
         }
-        $route_prefix = explode('/', ltrim($request->path(), '/'))[0];
-        if ($route_prefix === 'login') {
-            return $next($request);
-        }
         if ($request->method() === 'GET' && $request->header('HX-request') === null && str_contains($request->header('accept'), 'html')) {
             return response()->view('layout.layout', [
-                'primary_hx' => 'hx-get="/' . trim($request->path(), '/') . '" hx-trigger="load"',
+                'content' => $res->getContent(),
             ]);
         }
-        return $next($request);
+        return $res;
     }
 }
