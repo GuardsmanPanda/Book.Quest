@@ -4,6 +4,7 @@ namespace Infrastructure\Audit\Crud;
 
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
+use Infrastructure\Http\Service\Req;
 
 class AuditChangeCreator {
     /**
@@ -32,9 +33,9 @@ class AuditChangeCreator {
         bool $is_soft_deletion = false,
         array $record_data = null
     ): void {
-        $method = request()?->method();
-        $path = request()?->path();
-        $ip = request()?->ip();
+        $method = Req::method();
+        $path = Req::path();
+        $ip = Req::ip();
 
         DB::insert("
             INSERT INTO audit_change (

@@ -1,6 +1,6 @@
-<div class="flex flex-col min-h-full bg-gray-800 w-56">
+<div class="flex flex-col min-h-full bg-gray-100 w-56 border-r border-gray-300">
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-        <nav class="flex-1 px-2 bg-gray-800 space-y-1" aria-label="Sidebar">
+        <nav class="flex-1 px-2 space-y-1" aria-label="Sidebar">
             @include('layout.component.menu-item', ['title' => 'Author Home', 'url' => '/author', 'icon' => 'home'])
             @include('layout.component.menu-item', ['title' => 'Find Authors', 'url' => '/author/find', 'icon' => 'clipboard'])
             @include('layout.component.menu-item', ['title' => 'Author Kanban', 'url' => '/author/kanban', 'icon' => 'user-group', 'counter' => 4])
@@ -13,7 +13,7 @@
         @if(\Infrastructure\Auth\Service\Auth::hasPermission('author__create'))
             @include('layout.component.menu-button', ['text' => 'Add Author', 'url' => '/author/create/dialog'])
         @endif
-        <div class="bg-gray-700 p-2">
+        <div class="p-2 border-t border-gray-300">
             <a href="#" class="flex-shrink-0 w-full group block p-2">
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg"
