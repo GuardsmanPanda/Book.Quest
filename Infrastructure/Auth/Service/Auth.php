@@ -12,6 +12,7 @@ class Auth {
      * @var array<string>
      */
     private static ?array $permissions = null;
+    private static ?array $role = null;
 
     public static function id(): ?string {
         return self::$user_id;
@@ -43,5 +44,20 @@ class Auth {
             self::$permissions = array_column($per, 'permission_name');
         }
         return in_array($permission_name, self::$permissions, true);
+    }
+
+    public static function hasRole(string $roleName): bool {
+        if (self::$user_id === null) {
+            return false;
+        }
+        if (self::$role === null) {
+            $per = DB::select("
+                SELECT r.role_name
+                FROM role_user ru
+                JOIN role r on r.id = ru.role_id
+                WHERE ru.user_id = ?", [self::$user_id]);
+            self::$role = array_column($per, 'role_name');
+        }
+        return in_array($roleName, self::$role, true);
     }
 }

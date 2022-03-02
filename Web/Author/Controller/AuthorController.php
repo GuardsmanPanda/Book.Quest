@@ -31,7 +31,7 @@ class AuthorController extends Controller {
             ORDER BY random()
             LIMIT 1
         ");
-        Htmx::pushUrl('/author/' . $res->author_short_url_code . '/' . $res->author_slug);
+        Htmx::pushUrl("/author/show/$res->author_short_url_code/$res->author_slug");
         return $this->show($res->author_short_url_code);
     }
 }

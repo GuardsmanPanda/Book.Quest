@@ -18,9 +18,9 @@ class NarratorCreatorService {
             DB::beginTransaction();
             $result = NarratorCreator::create(
                 narrator_name: Req::getString('narrator_name'),
-                birth_date: Req::getDate('birth_date'),
                 birth_country: Country::find(Req::getString('birth_country_id')),
                 primary_language: Language::find(Req::getString('primary_language_id')),
+                birth_date: Req::getDate('birth_date'),
                 death_date: Req::getDate('death_date'),
             );
 

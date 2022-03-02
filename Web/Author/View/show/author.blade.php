@@ -1,1 +1,1 @@
-Name: {{$data->author_name}}
+<div>test</div>

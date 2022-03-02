@@ -8,19 +8,11 @@
     <script src="{{mix('/static/dist/app.js')}}"></script>
     <link rel="stylesheet" href="{{mix('/static/dist/app.css')}}">
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col container mx-auto">
 @include('layout.top-nav')
 <div class="flex flex-1 h-full">
-    <div id="left-menu">@include(match (\Infrastructure\Http\Service\Req::getAreaFromPath()) {
-        'author' => 'layout.menu-author',
-        'narrator' => 'layout.menu-narrator',
-        'map' => 'layout.menu-map',
-        'series' => 'layout.menu-series',
-        'universe' => 'layout.menu-universe',
-        default => 'layout.menu-book'
-    })
-    </div>
-    <div id="primary" class="flex-1 h-full">
+    <div id="left-menu">@include('layout.left-menu')</div>
+    <div id="primary" class="flex-1 h-full px-4 py-2">
         {!! $content !!}
     </div>
 </div>
@@ -41,7 +33,6 @@
 </dialog>
 <script>
     Dialog.registerDialog(document.getElementById('general-dialog'));
-    //tippy('[data-tippy-content]');
 </script>
 </body>
 </html>

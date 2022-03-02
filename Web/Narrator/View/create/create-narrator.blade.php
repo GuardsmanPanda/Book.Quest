@@ -17,7 +17,7 @@
             <div class="grid grid-cols-2 gap-2 w-full">
                 <div class="">
                     <label for="birth_date" class="block text-sm font-medium text-gray-800">Birth Date</label>
-                    <input type="date" name="birth_date" id="birth_date" required
+                    <input type="date" name="birth_date" id="birth_date"
                            class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"/>
                 </div>
                 <div class="">

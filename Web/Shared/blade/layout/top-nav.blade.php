@@ -1,5 +1,5 @@
-<nav class=" bg-gray-900 text-gray-400 font-bold w-screen flex items-center px-4 text-lg">
-    <a href="/dashboard" class="flex py-2 gap-4 text-red-400">
+<nav class="text-gray-400 font-bold w-full flex items-center px-4 text-lg border-gray-200 border-dashed border-b-2">
+    <a href="/dashboard" class="flex py-2 gap-2 text-gray-800 items-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
              stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -8,18 +8,13 @@
         <div>Book.Quest</div>
     </a>
     <div class="flex flex-1 pl-6 items-center" hx-target="#primary">
-        <a href="/book" hx-fastnav class="px-2 py-2 text-amber-500 hover:text-amber-300 hover:underline decoration-2">Books</a>
-        <a href="/author" hx-fastnav class="px-2 py-2 text-lime-500 hover:text-lime-300 hover:underline decoration-2">Authors</a>
-        <a href="/series" hx-fastnav class="px-2 py-2 text-green-500 hover:text-green-300 hover:underline decoration-2">Series</a>
-        <a href="/universe"  hx-fastnav class="px-2 py-2 text-emerald-500 hover:text-emerald-300 hover:underline decoration-2">Universes</a>
-        <a href="/narrator"  hx-fastnav class="px-2 py-2 text-cyan-500 hover:text-cyan-300 hover:underline decoration-2">Narrators</a>
-        <a href="/map"  hx-fastnav class="px-2 py-2 text-sky-500 hover:text-sky-300 hover:underline decoration-2">Map</a>
+        Search Box Here
     </div>
     <div>
         @if(\Infrastructure\Auth\Service\Auth::user() !== null)
             <div>{{\Infrastructure\Auth\Service\Auth::user()->display_name}}</div>
         @else
-            <button onclick="dialog('/login/login-selector-dialog')" class="text-white font-medium">Login</button>
+            <button onclick="dialog('/login/login-selector-dialog')" class="font-medium">Login</button>
         @endif
     </div>
 </nav>

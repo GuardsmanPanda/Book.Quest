@@ -5,6 +5,7 @@
 /storage/phpstan/
 /storage/*.key
 /vendor
+/public/mix-manifest.json
 .env*
 .phpunit.result.cache
 docker-compose.override.yml
