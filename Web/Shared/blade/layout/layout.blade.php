@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<dialog id="general-dialog" class="p-0">
+<dialog id="general-dialog" class="p-0 shadow-xl">
     <div class="flex bg-neutral-600 text-gray-100 justify-between h-8 items-center font-medium pl-4 gap-4 capitalize">
         <div id="pop-title">Dialog</div>
         <form method="dialog">
