@@ -5,21 +5,24 @@ namespace Web\Author\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Htmx;
 
 class AuthorController extends Controller {
     public function show(string $url_code): View {
-        $data = DB::selectOne("
+        $author = DB::selectOne("
             SELECT
-                a.author_name
+                a.id, a.author_name, a.followers,
+                au.status
             FROM author a
+            LEFT JOIN author_user au on au.author_id = a.id AND au.user_id = ?
             WHERE a.author_short_url_code = ?
-        ", [$url_code]);
-        if ($data === null) {
+        ", [Auth::id(), $url_code]);
+        if ($author === null) {
             Htmx::hxRedirect('/author');
         }
         return view('author::show.author', [
-            'data' => $data
+            'author' => $author
         ]);
     }
 

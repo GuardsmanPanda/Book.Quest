@@ -15,6 +15,10 @@ class TwitchLoginController extends Controller {
     public function redirect(): RedirectResponse {
         $state = Str::random(40);
         session()->put('oauth2state', $state);
+        $ref = Req::header('referer', true);
+        if ($ref !== null && str_starts_with($ref, env('app.url'))) {
+            session()->put('oauth2ref', $ref);
+        }
         $url = "https://id.twitch.tv/oauth2/authorize?client_id=" . config('app-settings.twitch_client_id') . "&state=$state&redirect_uri=" . config('app.url') . "login/twitch/callback&response_type=code&scope=user:read:email";
         return new RedirectResponse($url, 302);
     }
