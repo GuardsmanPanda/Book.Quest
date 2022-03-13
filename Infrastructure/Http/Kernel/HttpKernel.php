@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Infrastructure\Http\Middleware\HtmxBuster;
-use Infrastructure\Http\Middleware\Idempotency;
+use Infrastructure\Http\Middleware\Integrity;
 use Infrastructure\Http\Middleware\Initiate;
 use Infrastructure\Http\Middleware\Permission;
 use Infrastructure\Http\Middleware\TrimStrings;
@@ -38,7 +38,7 @@ class HttpKernel extends Kernel {
             AddQueuedCookiesToResponse::class,
             StartSession::class,
             WebAuth::class,
-            Idempotency::class,
+            Integrity::class,
             HtmxBuster::class,
             SubstituteBindings::class,
         ],
@@ -55,7 +55,7 @@ class HttpKernel extends Kernel {
         Initiate::class,
         WebAuth::class,
         Permission::class,
-        Idempotency::class,
+        Integrity::class,
         HtmxBuster::class,
         SubstituteBindings::class,
     ];

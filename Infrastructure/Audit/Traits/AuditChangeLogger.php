@@ -4,7 +4,6 @@ namespace Infrastructure\Audit\Traits;
 
 use Closure;
 use Illuminate\Database\Eloquent\Casts\ArrayObject;
-use Illuminate\Support\Facades\DB;
 use Infrastructure\Audit\Crud\AuditChangeCreator;
 use Infrastructure\Audit\Utility\Extractors;
 use Throwable;
@@ -50,7 +49,6 @@ trait AuditChangeLogger {
 
         self::updating(static function ($model) {
             try {
-                DB::beginTransaction();
                 $keys = Extractors::extraPrimaryKeyArray($model);
 
                 $ignore_columns = $model->audit_ignore_columns ?? [];
@@ -81,10 +79,8 @@ trait AuditChangeLogger {
                         new_value: $new_value,
                     );
                 }
-                DB::commit();
             } catch (Throwable $t) {
-                DB::rollBack();
-
+                //TODO log error
             }
         });
     }
