@@ -17,6 +17,7 @@ class AuthorController extends Controller {
         $author = DB::selectOne("
             SELECT
                 a.id, a.author_name, a.followers, a.birth_year, a.birth_date, a.death_date,
+                c.country_name, l.language_name,
                 au.status,
                 ( SELECT COUNT(*)
                     FROM author_user
@@ -24,6 +25,8 @@ class AuthorController extends Controller {
                 ) AS follow_count
             FROM author a
             LEFT JOIN author_user au on au.author_id = a.id AND au.user_id = ?
+            LEFT JOIN country c on a.birth_country_id = c.id
+            LEFT JOIN language l on l.id = a.primary_language_id
             WHERE a.author_short_url_code = ?
         ", [Auth::id(), $url_code]);
         if ($author === null) {

@@ -35,6 +35,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Builder|Author whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Author orderBy(string $column, string $direction = 'asc')
  *
+ * @property int $followers
  * @property int $birth_year
  * @property string $id
  * @property string $author_name

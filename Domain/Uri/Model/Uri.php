@@ -1,10 +1,12 @@
 <?php
 
-namespace Domain\App\Model;
+namespace Domain\Uri\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
+use Domain\Uri\Model\UriSource;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
 use Infrastructure\Audit\Traits\AuditChangeLogger;
 
@@ -32,8 +34,13 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  * @method static Builder|Uri orderBy(string $column, string $direction = 'asc')
  *
  * @property string $id
+ * @property string $uri_type
  * @property string $uri_title
+ * @property string $uri_target
+ * @property string $uri_source_id
  * @property CarbonInterface $created_at
+ * @property CarbonInterface $uri_broken_at
+ * @property UriSource $uri_source
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
@@ -51,7 +58,12 @@ class Uri extends Model {
      */
     protected $casts = [
         'created_at' => 'immutable_datetime',
+        'uri_broken_at' => 'immutable_datetime',
     ];
 
     protected $guarded = ['id','updated_at','created_at','deleted_at'];
+
+    public function uriSource(): BelongsTo {
+        return $this->belongsTo(UriSource ::class, 'uri_source_id', 'id');
+    }
 }

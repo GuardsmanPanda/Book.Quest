@@ -5,18 +5,26 @@
             <div class="space-y-2">
                 <div class="col-span-2 bg-gray-100">Picture</div>
                 <div class="grid grid-cols-2 space-y-2">
-                    <div class="sm:col-span-1">
+                    <div>
                         <div class="text-sm font-medium text-gray-500">Follower</div>
                         <div class="ml-2 text-sm text-gray-900">{{$author->follow_count}}</div>
                     </div>
                     @include('author::show.author-follow-button', ['status' => $author->status, 'author_id' => $author->id])
-                    <div class="sm:col-span-1">
-                        <div class="text-sm font-medium text-gray-500">Birth Date</div>
+                    <div >
+                        <div class="text-sm font-medium text-gray-500">Born</div>
                         <div class="ml-2 text-sm text-gray-900">{{$author->birth_date}}</div>
                     </div>
-                    <div class="sm:col-span-1">
+                    <div>
                         <div class="text-sm font-medium text-gray-500">Died</div>
                         <div class="ml-2 text-sm text-gray-900">{{$author->death_date}}</div>
+                    </div>
+                    <div>
+                        <div class="text-sm font-medium text-gray-500">From</div>
+                        <div class="ml-2 text-sm text-gray-900">{{$author->country_name}}</div>
+                    </div>
+                    <div>
+                        <div class="text-sm font-medium text-gray-500">Native Language</div>
+                        <div class="ml-2 text-sm text-gray-900">{{$author->language_name}}</div>
                     </div>
                 </div>
             </div>

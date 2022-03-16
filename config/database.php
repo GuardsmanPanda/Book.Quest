@@ -13,15 +13,7 @@ return [
             'location' => 'Domain/Author/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
-        'author_uri' => [
-            'location' => 'Domain/Author/Model',
-            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
-        ],
         'book' => [
-            'location' => 'Domain/Book/Model',
-            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
-        ],
-        'book_uri' => [
             'location' => 'Domain/Book/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
@@ -39,15 +31,7 @@ return [
             'location' => 'Domain/Narrator/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
-        'narrator_uri' => [
-            'location' => 'Domain/Narrator/Model',
-            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
-        ],
         'series' => [
-            'location' => 'Domain/Series/Model',
-            'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
-        ],
-        'series_uri' => [
             'location' => 'Domain/Series/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
@@ -59,12 +43,12 @@ return [
             'location' => 'Domain/Universe/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
-        'universe_uri' => [
-            'location' => 'Domain/Universe/Model',
+        'uri' => [
+            'location' => 'Domain/Uri/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
-        'uri' => [
-            'location' => 'Domain/App/Model',
+        'uri_source' => [
+            'location' => 'Domain/Uri/Model',
             'traits' =>[\Infrastructure\Audit\Traits\AuditChangeLogger::class],
         ],
         'users' => [
@@ -109,7 +93,6 @@ return [
             'schema' => 'book',
         ],
     ],
-
 
     'migrations' => 'z_migrations',
 
