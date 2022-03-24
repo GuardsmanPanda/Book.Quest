@@ -4,11 +4,12 @@ namespace Service\Series\Crud;
 
 use Domain\App\Enum\TimePeriodEnum;
 use Domain\App\Enum\WorldTypeEnum;
-use Domain\App\Model\Uri;
 use Domain\Series\Crud\SeriesCreator;
-use Domain\Series\Crud\SeriesUriCreator;
 use Domain\Series\Model\Series;
 use Domain\Universe\Model\Universe;
+use Domain\Uri\Crud\UriCreator;
+use Domain\Uri\Enum\UriTypeEnum;
+use Domain\Uri\Model\UriSource;
 use Infrastructure\Http\Service\Req;
 
 class SeriesCreatorService {
@@ -21,18 +22,18 @@ class SeriesCreatorService {
         );
 
         if (Req::has('wikipedia_uri')) {
-            SeriesUriCreator::create(
-                series: $res,
-                uri: Uri::find('wikipedia'),
-                series_uri: Req::getString('wikipedia_uri'),
+            UriCreator::create(
+                uri_target: Req::getString('wikipedia_uri'),
+                uri_type: UriTypeEnum::from('SERIES'),
+                uri_source: UriSource::find('WIKIPEDIA'),
             );
         }
 
         if (Req::has('goodreads_uri')) {
-            SeriesUriCreator::create(
-                series: $res,
-                uri: Uri::find('goodreads'),
-                series_uri: Req::getString('goodreads_uri'),
+            UriCreator::create(
+                uri_target: Req::getString('goodreads_uri'),
+                uri_type: UriTypeEnum::from('SERIES'),
+                uri_source: UriSource::find('GOODREADS'),
             );
         }
         return $res;

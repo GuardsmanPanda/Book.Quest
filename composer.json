@@ -26,7 +26,7 @@
 
         },
         "files": [
-            "Infrastructure/App/Service/helpers.php"
+            "Infrastructure/App/helpers.php"
         ]
     },
     "scripts": {
