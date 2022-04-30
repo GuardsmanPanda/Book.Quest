@@ -6,7 +6,7 @@ use Infrastructure\App\Model\Config;
 
 class ShortUrlCodeService {
     public static function generateCode(): string {
-        $chars = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
+        $chars = '0123456789abcdefghijklmnopqrstuvwxyz';
         $url_config = Config::lockForUpdate()->find('short_url_code');
         $value = $url_config->config_value;
         // Change value string into array of characters
