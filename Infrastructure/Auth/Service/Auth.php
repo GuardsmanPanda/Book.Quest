@@ -28,7 +28,7 @@ class Auth {
         }
         self::$current_user ??= User::find(self::$user_id);
         return self::$current_user;
-    } // url/author/code/pretty-title
+    }
 
     public static function hasPermission(string $permission_name): bool {
         if (self::$user_id === null) {

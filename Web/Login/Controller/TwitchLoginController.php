@@ -2,11 +2,11 @@
 
 namespace Web\Login\Controller;
 
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Infrastructure\Http\Service\Req;
 use Service\User\Service\UserFromTwitchDataService;
 use Web\Login\Utility\LoginUtility;
 

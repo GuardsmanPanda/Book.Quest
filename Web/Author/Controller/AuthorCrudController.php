@@ -3,10 +3,10 @@
 namespace Web\Author\Controller;
 
 use Domain\Author\Model\Author;
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Infrastructure\Http\Service\Htmx;
-use Infrastructure\Http\Service\Req;
 use Integration\Goodreads\Client\AuthorScraper;
 use Service\Author\Crud\AuthorCreationService;
 use Symfony\Component\HttpFoundation\Response;

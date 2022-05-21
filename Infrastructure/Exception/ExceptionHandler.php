@@ -2,8 +2,8 @@
 
 namespace Infrastructure\Exception;
 
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Foundation\Exceptions\Handler;
-use Infrastructure\Http\Service\Req;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Throwable;

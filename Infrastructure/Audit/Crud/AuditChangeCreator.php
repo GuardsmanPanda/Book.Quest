@@ -2,9 +2,9 @@
 
 namespace Infrastructure\Audit\Crud;
 
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
-use Infrastructure\Http\Service\Req;
 
 class AuditChangeCreator {
     /**

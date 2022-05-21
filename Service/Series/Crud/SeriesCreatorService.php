@@ -10,7 +10,7 @@ use Domain\Universe\Model\Universe;
 use Domain\Uri\Crud\UriCreator;
 use Domain\Uri\Enum\UriTypeEnum;
 use Domain\Uri\Model\UriSource;
-use Infrastructure\Http\Service\Req;
+use GuardsmanPanda\Larabear\Service\Req;
 
 class SeriesCreatorService {
     public static function createFromRequest(): Series {

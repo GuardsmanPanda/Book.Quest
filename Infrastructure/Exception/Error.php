@@ -2,10 +2,10 @@
 
 namespace Infrastructure\Exception;
 
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Support\Facades\Log;
 use Infrastructure\Audit\Model\AuditError;
 use Infrastructure\Auth\Service\Auth;
-use Infrastructure\Http\Service\Req;
 use Throwable;
 
 class Error {

@@ -3,10 +3,10 @@
 namespace Infrastructure\Http\Middleware;
 
 use Closure;
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
-use Infrastructure\Http\Service\Req;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 

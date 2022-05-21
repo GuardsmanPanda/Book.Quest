@@ -6,7 +6,7 @@ use Domain\App\Model\Country;
 use Domain\App\Model\Language;
 use Domain\Author\Crud\AuthorCreator;
 use Domain\Author\Model\Author;
-use Infrastructure\Http\Service\Req;
+use GuardsmanPanda\Larabear\Service\Req;
 
 class AuthorCreationService {
     public static function createFromRequest(): Author {

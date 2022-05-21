@@ -4,6 +4,7 @@ namespace Web\Login\Utility;
 
 use Domain\User\Model\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 
 class LoginUtility {
     public static function loginAndRedirect(User $user): RedirectResponse {

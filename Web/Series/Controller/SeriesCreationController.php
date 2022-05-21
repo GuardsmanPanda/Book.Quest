@@ -3,11 +3,11 @@
 namespace Web\Series\Controller;
 
 use Domain\Universe\Model\Universe;
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Http\Service\Htmx;
-use Infrastructure\Http\Service\Req;
 use Service\Series\Crud\SeriesCreatorService;
 use Symfony\Component\HttpFoundation\Response;
 

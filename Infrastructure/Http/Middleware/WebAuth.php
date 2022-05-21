@@ -3,9 +3,9 @@
 namespace Infrastructure\Http\Middleware;
 
 use Closure;
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Http\Request;
 use Infrastructure\Auth\Service\Auth;
-use Infrastructure\Http\Service\Req;
 use Symfony\Component\HttpFoundation\Response;
 use function abort_unless;
 use function session;

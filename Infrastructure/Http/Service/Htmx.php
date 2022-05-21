@@ -2,7 +2,8 @@
 
 namespace Infrastructure\Http\Service;
 
-use Infrastructure\Http\Middleware\Initiate;
+use GuardsmanPanda\Larabear\Middleware\InitiateMiddleware;
+use GuardsmanPanda\Larabear\Service\Req;
 use Symfony\Component\HttpFoundation\Response;
 
 class Htmx {
@@ -20,6 +21,6 @@ class Htmx {
     }
 
     public static function pushUrl(string $url): void {
-        Initiate::$headers['hx-push'] = $url;
+        InitiateMiddleware::$headers['hx-push'] = $url;
     }
 }

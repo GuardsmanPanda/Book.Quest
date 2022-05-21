@@ -4,8 +4,6 @@ namespace Infrastructure\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Infrastructure\Http\Service\Htmx;
-use Infrastructure\Http\Service\Req;
 use Symfony\Component\HttpFoundation\Response;
 use function response;
 

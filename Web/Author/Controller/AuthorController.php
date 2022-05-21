@@ -4,20 +4,16 @@ namespace Web\Author\Controller;
 
 use Domain\Author\Enum\AuthorUserStatus;
 use Domain\Author\Model\Author;
+use GuardsmanPanda\Larabear\Service\Req;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
-use Infrastructure\Http\Middleware\Initiate;
 use Infrastructure\Http\Service\Htmx;
-use Infrastructure\Http\Service\Req;
 use Service\Author\Crud\AuthorUserCrudService;
 
 class AuthorController extends Controller {
     public function show(string $url_code): View {
-        if ($url_code === '0') {
-            Initiate::$headers['X-Clacks-Overhead'] = 'GNU Terry Pratchett';
-        }
         $author = DB::selectOne("
             SELECT
                 a.id, a.author_name, a.followers, a.birth_year, a.birth_date, a.death_date,
