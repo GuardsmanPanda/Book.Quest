@@ -2,9 +2,9 @@
 
 namespace Infrastructure\Http\Provider;
 
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use GuardsmanPanda\LarabearUi\Infrastructure\Http\Middleware\BearHtmxMiddleware;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\Facades\Route;
 use function base_path;
 
@@ -12,10 +12,9 @@ class RouteServiceProvider extends ServiceProvider {
     public function boot():void {
         $this->routes(function () {
              Route::group([], base_path('Web/Layout/routes.php'));
-             Route::middleware([AddQueuedCookiesToResponse::class, StartSession::class])
-                 ->prefix('login')->group(base_path('Web/Login/routes.php'));
+             Route::middleware(['session-auth:allow-guest'])->prefix('login')->group(base_path('Web/Login/routes.php'));
 
-            Route::middleware('web')->group(function () {
+            Route::middleware(['session:allow-guest', BearHtmxMiddleware::class, SubstituteBindings::class])->group(function () {
                 Route::prefix('author')->group(base_path('Web/Author/routes.php'));
                 Route::prefix('book')->group(base_path('Web/Book/routes.php'));
                 Route::prefix('dashboard')->group(base_path('Web/Dashboard/routes.php'));

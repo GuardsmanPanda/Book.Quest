@@ -1,10 +1,10 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
-    content: ['Web/**/*.blade.php'],
+    content: ['Web/Www/**/*.blade.php', 'vendor/guardsmanpanda/larabear-ui/src/Web/Www/**/*.php'],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+            transitionDuration: {
+                '50': '50ms',
             },
         },
     },

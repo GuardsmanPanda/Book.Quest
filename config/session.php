@@ -18,5 +18,5 @@ return [
     'domain' => null,
     'secure' => true,
     'http_only' => true,
-    'same_site' => 'strict',
+    'same_site' => 'lax',
 ];

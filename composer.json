@@ -1,20 +1,22 @@
 {
-    "name": "laravel/laravel",
+    "name": "book/quest",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "The Quest For More Books",
+    "keywords": ["book", "reading", "quest"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
         "ext-dom": "*",
         "ext-libxml": "*",
         "guardsmanpanda/larabear": "dev-main",
-        "guzzlehttp/guzzle": "^7.4",
-        "laravel/framework": "^v9.4"
+        "guardsmanpanda/larabear-auth": "dev-main",
+        "guardsmanpanda/larabear-culture": "dev-main",
+        "guardsmanpanda/larabear-ui": "dev-main",
+        "guzzlehttp/guzzle": "^7.5",
+        "laravel/framework": "^v9.33"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
             "Domain\\": "Domain/",
             "Integration\\": "Integration/",
             "Infrastructure\\": "Infrastructure/",
@@ -22,24 +24,11 @@
             "Web\\": "Web/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-
-        },
-        "files": [
-            "Infrastructure/App/helpers.php"
-        ]
-    },
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
     },
     "config": {
         "optimize-autoloader": true,
@@ -49,7 +38,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
-        "phpstan/phpstan": "^1.4"
+        "guardsmanpanda/larabear-dev": "dev-main",
+        "roave/security-advisories": "dev-latest"
     }
 }

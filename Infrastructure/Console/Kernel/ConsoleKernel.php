@@ -5,8 +5,6 @@ namespace Infrastructure\Console\Kernel;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
-use Infrastructure\Integrity\Command\PhpStan;
-use Infrastructure\Database\Command\GenerateModels;
 
 class ConsoleKernel extends Kernel {
     /**
@@ -15,13 +13,10 @@ class ConsoleKernel extends Kernel {
      * @var array<class-string>
      */
     protected $commands = [
-        GenerateModels::class,
-        PhpStan::class,
     ];
 
     /**
      * Define the application's command schedule.
-     *
      * @param Schedule $schedule
      * @return void
      */

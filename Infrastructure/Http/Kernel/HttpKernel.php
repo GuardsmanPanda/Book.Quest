@@ -2,53 +2,37 @@
 
 namespace Infrastructure\Http\Kernel;
 
-use GuardsmanPanda\Larabear\Middleware\InitiateMiddleware;
+use GuardsmanPanda\Larabear\Infrastructure\Http\Middleware\BearInitiateMiddleware;
+use GuardsmanPanda\Larabear\Infrastructure\Http\Middleware\BearTransactionMiddleware;
+use GuardsmanPanda\LarabearAuth\Infrastructure\Http\Middleware\BearAccessTokenAppMiddleware;
+use GuardsmanPanda\LarabearAuth\Infrastructure\Http\Middleware\BearAccessTokenUserMiddleware;
+use GuardsmanPanda\LarabearAuth\Infrastructure\Http\Middleware\BearPermissionMiddleware;
+use GuardsmanPanda\LarabearAuth\Infrastructure\Http\Middleware\BearRoleMiddleware;
+use GuardsmanPanda\LarabearAuth\Infrastructure\Http\Middleware\BearSessionAuthMiddleware;
+use GuardsmanPanda\LarabearUi\Infrastructure\Http\Middleware\BearHtmxMiddleware;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\StartSession;
-use Infrastructure\Http\Middleware\HtmxBuster;
-use Infrastructure\Http\Middleware\Integrity;
-use Infrastructure\Http\Middleware\Permission;
-use Infrastructure\Http\Middleware\WebAuth;
 
 class HttpKernel extends Kernel {
     protected $middleware = [
-        InitiateMiddleware::class,
+        BearInitiateMiddleware::class,
     ];
 
-    /**
-     * The application's route middleware groups.
-     *
-     * @var array<string, array<class-string>>
-     */
-    protected $middlewareGroups = [
-        'web' => [
-            StartSession::class,
-            WebAuth::class,
-            Integrity::class,
-            HtmxBuster::class,
-            SubstituteBindings::class,
-        ],
-    ];
-
-    /**
-     * @var array<class-string>
-     */
     protected $middlewarePriority = [
-        StartSession::class,
-        InitiateMiddleware::class,
-        WebAuth::class,
-        Permission::class,
-        Integrity::class,
-        HtmxBuster::class,
+        BearInitiateMiddleware::class,
+        BearAccessTokenAppMiddleware::class,
+        BearAccessTokenUserMiddleware::class,
+        BearSessionAuthMiddleware::class,
+        BearRoleMiddleware::class,
+        BearPermissionMiddleware::class,
+        BearTransactionMiddleware::class,
+        BearHtmxMiddleware::class,
         SubstituteBindings::class,
     ];
 
-    /**
-     * @var array<string, class-string>
-     */
     protected $routeMiddleware = [
-        'permission' => Permission::class,
-        'session' => StartSession::class,
+        'permission' => BearPermissionMiddleware::class,
+        'role' => BearRoleMiddleware::class,
+        'session' => BearSessionAuthMiddleware::class,
     ];
 }

@@ -14,14 +14,6 @@ return [
             'retry_after' => 90,
             'after_commit' => false,
         ],
-        'beanstalkd' => [
-            'driver' => 'beanstalkd',
-            'host' => 'localhost',
-            'queue' => 'default',
-            'retry_after' => 90,
-            'block_for' => 0,
-            'after_commit' => false,
-        ],
     ],
 
     'failed' => [
