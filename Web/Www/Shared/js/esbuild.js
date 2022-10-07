@@ -1,5 +1,5 @@
 require('esbuild').build({
-    entryPoints: ['Web/Shared/js/app.js'],
+    entryPoints: ['Web/Www/Shared/js/app.js'],
     sourcemap: true,
     watch: process.argv.includes("--watch"),
     bundle: true,
@@ -12,7 +12,7 @@ require('esbuild').build({
 }).catch(() => process.exit(1))
 
 const exec = require('child_process').exec;
-exec('npx tailwindcss -i Web/Shared/css/app.css -o public/static/dist/app.css', function(error, stdout, stderr){ console.log('\n----\nCSS ' + stdout);  console.log(stderr); });
+exec('npx tailwindcss -i Web/Www/Shared/css/app.css -o public/static/dist/app.css', function(error, stdout, stderr){ console.log('\n----\nCSS ' + stdout);  console.log(stderr); });
 
 const fs = require('fs')
 fs.writeFile('public/mix-manifest.json', JSON.stringify({

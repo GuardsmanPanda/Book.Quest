@@ -4,7 +4,7 @@
     "description": "Book Quest is a simple, fun, and educational way to learn about the world of books.",
     "private": true,
     "scripts": {
-        "b": "node esbuild.js"
+        "b": "node Web/Www/Shared/js/esbuild.js"
     },
     "author": "Bjørn Dons",
     "license": "MIT",

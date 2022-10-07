@@ -13,6 +13,7 @@ return [
     //------------------------------------------------------------------------------------------------------------------
     'eloquent-model-generator' => [
         'pgsql' => [
+            'author' => ['location' => 'Domain/Author/Model', 'log_change' => true,],
             'users' => ['class' => 'User', 'location' => 'Domain/User/Model', 'log_change' => true,],
         ]
     ]

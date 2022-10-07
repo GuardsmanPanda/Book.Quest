@@ -2,7 +2,6 @@
 
 return [
     'default' => env(key: 'QUEUE_CONNECTION', default: 'sync'),
-
     'connections' => [
         'sync' => [
             'driver' => 'sync',
