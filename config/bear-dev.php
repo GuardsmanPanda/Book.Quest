@@ -13,8 +13,15 @@ return [
     //------------------------------------------------------------------------------------------------------------------
     'eloquent-model-generator' => [
         'pgsql' => [
-            'author' => ['location' => 'Domain/Author/Model', 'log_change' => true,],
-            'users' => ['class' => 'User', 'location' => 'Domain/User/Model', 'log_change' => true,],
+            'author' => ['location' => 'Domain/Author/Model', 'log_change' => true],
+            'author_user' => ['location' => 'Domain/Author/Model', 'log_change' => true],
+            'book' => ['location' => 'Domain/Book/Model', 'log_change' => true],
+            'book_category' => ['location' => 'Domain/Book/Model', 'log_change' => true],
+            'book_time_period' => ['location' => 'Domain/Book/Model', 'log_change' => true],
+            'narrator' => ['location' => 'Domain/Narrator/Model', 'log_change' => true],
+            'series' => ['location' => 'Domain/Series/Model', 'log_change' => true],
+            'universe' => ['location' => 'Domain/Universe/Model', 'log_change' => true],
+            'users' => ['class' => 'User', 'location' => 'Domain/User/Model', 'log_change' => true],
         ]
     ]
 ];

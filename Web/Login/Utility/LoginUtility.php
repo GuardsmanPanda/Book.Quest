@@ -10,7 +10,7 @@ class LoginUtility {
     public static function loginAndRedirect(User $user): RedirectResponse {
         $last_ref = session()->get('oauth2ref');
         session()->migrate(true);
-        session()->put('login_id', $user->id);
+        session()->put('logged_in_user_id', $user->id);
         return new RedirectResponse($last_ref ?? '/dashboard');
     }
 }

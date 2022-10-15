@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Infrastructure\Http\Service\Htmx;
 use Integration\Goodreads\Client\AuthorScraper;
-use Service\Author\Crud\AuthorCreationService;
+use Service\Author\Crud\AuthorCrud;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthorCrudController extends Controller {
@@ -21,7 +21,7 @@ class AuthorCrudController extends Controller {
     }
 
     public function create(): Response {
-        AuthorCreationService::createFromRequest();
+        AuthorCrud::createFromRequest();
         return Htmx::hxRedirect('/author');
     }
 

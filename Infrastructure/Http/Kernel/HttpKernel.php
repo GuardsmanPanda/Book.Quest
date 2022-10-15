@@ -14,10 +14,12 @@ use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 
 class HttpKernel extends Kernel {
+    /** @var class-string[] $middleware Run Always */
     protected $middleware = [
         BearInitiateMiddleware::class,
     ];
 
+    /** @var class-string[] $middlewarePriority Order, run always middleware always runs first. */
     protected $middlewarePriority = [
         BearInitiateMiddleware::class,
         BearAccessTokenAppMiddleware::class,
@@ -28,11 +30,5 @@ class HttpKernel extends Kernel {
         BearTransactionMiddleware::class,
         BearHtmxMiddleware::class,
         SubstituteBindings::class,
-    ];
-
-    protected $routeMiddleware = [
-        'permission' => BearPermissionMiddleware::class,
-        'role' => BearRoleMiddleware::class,
-        'session' => BearSessionAuthMiddleware::class,
     ];
 }

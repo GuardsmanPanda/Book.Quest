@@ -4,97 +4,116 @@ namespace Domain\Book\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
-use Domain\Book\Model\Category;
-use Domain\Book\Model\TimePeriod;
+use Domain\Series\Model\Series;
+use Domain\Universe\Model\Universe;
+use GuardsmanPanda\Larabear\Enum\BearSeverityEnum;
+use GuardsmanPanda\Larabear\Infrastructure\Database\Traits\BearLogDatabaseChanges;
+use GuardsmanPanda\Larabear\Infrastructure\Error\Crud\BearLogErrorCreator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Str;
-use Infrastructure\Audit\Traits\AuditChangeLogger;
+use RuntimeException;
 
 /**
  * AUTO GENERATED FILE DO NOT MODIFY
  *
- * @method static Book find(string $id, array $columns = ['*'])
+ * @method static Book|null find(string $id, array $columns = ['*'])
  * @method static Book findOrFail(string $id, array $columns = ['*'])
- * @method static Book findOrNew(string $id, array $columns = ['*'])
  * @method static Book sole(array $columns = ['*'])
- * @method static Book first(array $columns = ['*'])
+ * @method static Book|null first(array $columns = ['*'])
  * @method static Book firstOrFail(array $columns = ['*'])
  * @method static Book firstOrCreate(array $filter, array $values)
  * @method static Book firstOrNew(array $filter, array $values)
  * @method static Book|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Collection|Book all(array $columns = ['*'])
+ * @method static Collection|Book fromQuery(string $query, array $bindings = [])
  * @method static Builder|Book lockForUpdate()
  * @method static Builder|Book select(array $columns = ['*'])
  * @method static Builder|Book with(array  $relations)
  * @method static Builder|Book leftJoin(string $table, string $first, string $operator = null, string $second = null)
  * @method static Builder|Book where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Book whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Book whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
+ * @method static Builder|Book whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static Builder|Book whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
+ * @method static Builder|Book whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
  * @method static Builder|Book whereNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Book whereNotNull(string|array $columns, string $boolean = 'and')
+ * @method static Builder|Book whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Builder|Book orderBy(string $column, string $direction = 'asc')
  *
- * @property int $page_count
- * @property int $series_order_major
- * @property int $series_order_minor
+ * @property int|null $page_count
+ * @property int|null $series_order_major
+ * @property int|null $series_order_minor
  * @property string $id
- * @property string $isbn_10
- * @property string $isbn_13
  * @property string $age_group
  * @property string $book_slug
- * @property string $series_id
  * @property string $book_title
  * @property string $world_type
- * @property string $audible_url
- * @property string $category_id
- * @property string $universe_id
- * @property string $goodreads_url
- * @property string $wikipedia_url
- * @property string $amazon_com_url
- * @property string $time_period_id
- * @property string $google_books_id
+ * @property string $book_category_enum
  * @property string $book_short_url_code
- * @property CarbonInterface $publication_date
+ * @property string $book_time_period_enum
+ * @property string|null $isbn_10
+ * @property string|null $isbn_13
+ * @property string|null $series_id
+ * @property string|null $universe_id
+ * @property string|null $goodreads_url
+ * @property string|null $amazon_com_url
+ * @property string|null $google_books_id
+ * @property CarbonInterface|null $publication_date
  * @property CarbonInterface $created_at
  * @property CarbonInterface $updated_at
- * @property Category $category
- * @property TimePeriod $time_period
+ *
+ * @property Universe|null $universe
+ * @property Series|null $series
+ * @property BookTimePeriod $bookTimePeriodEnum
+ * @property BookCategory $bookCategoryEnum
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
 class Book extends Model {
-    use AuditChangeLogger;
+    use BearLogDatabaseChanges;
 
+    protected $connection = 'pgsql';
     protected $table = 'book';
-    protected $dateFormat = 'Y-m-d H:i:sO';
     protected $keyType = 'string';
-    public $incrementing = false;
+    protected $dateFormat = 'Y-m-d H:i:sO';
 
-    /**
-     * @var array<string, string>
-     */
+    /** @var array<string, string> $casts */
     protected $casts = [
         'created_at' => 'immutable_datetime',
         'publication_date' => 'immutable_date',
         'updated_at' => 'immutable_datetime',
     ];
 
-    public static function boot(): void {
-        parent::boot();
-        static::creating(static function (self $model) {
-            if ($model->id === null) {
-                $model->id = Str::uuid()->toString();
-            }
-        });
+
+    public function universe(): BelongsTo|null {
+        return $this->belongsTo(related: Universe::class, foreignKey: 'universe_id', ownerKey: 'id');
+    }
+    public function series(): BelongsTo|null {
+        return $this->belongsTo(related: Series::class, foreignKey: 'series_id', ownerKey: 'id');
+    }
+    public function bookTimePeriodEnum(): BelongsTo {
+        return $this->belongsTo(related: BookTimePeriod::class, foreignKey: 'book_time_period_enum', ownerKey: 'book_time_period_enum');
+    }
+    public function bookCategoryEnum(): BelongsTo {
+        return $this->belongsTo(related: BookCategory::class, foreignKey: 'book_category_enum', ownerKey: 'book_category_enum');
     }
 
-    protected $guarded = ['id','updated_at','created_at','deleted_at'];
+    protected $guarded = ['id', 'updated_at', 'created_at', 'deleted_at'];
 
-    public function category(): BelongsTo {
-        return $this->belongsTo(Category ::class, 'category_id', 'id');
-    }
-    public function timePeriod(): BelongsTo {
-        return $this->belongsTo(TimePeriod ::class, 'time_period_id', 'id');
+    public function getAttribute($key) {
+        $resp =  parent::getAttribute($key);
+        if ($resp !== null || array_key_exists(key: $key, array: $this->attributes) || array_key_exists(key: $key, array: $this->relations)) {
+            return $resp;
+        }
+        BearLogErrorCreator::create(
+            message: "Attribute $key not loaded on " . static::class,
+            namespace: "larabear",
+            key: "attribute_not_loaded",
+            severity: BearSeverityEnum::CRITICAL,
+            remedy: "Make sure to include used attributes in the SELECT statement",
+        );
+        throw new RuntimeException(message: "Attribute $key not loaded on " . static::class);
     }
 }

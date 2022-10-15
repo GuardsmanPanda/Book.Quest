@@ -16,8 +16,8 @@ exec('npx tailwindcss -i Web/Www/Shared/css/app.css -o public/static/dist/app.cs
 
 const fs = require('fs')
 fs.writeFile('public/mix-manifest.json', JSON.stringify({
-    "/static/dist/app.js": "/static/dist/app.js?id=" + Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2),
-    "/static/dist/app.css": "/static/dist/app.css?id=" + Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2,),
+    "/static/dist/app.js": "/static/dist/app.js?id=" + Math.random().toString(36) + Math.random().toString(36),
+    "/static/dist/app.css": "/static/dist/app.css?id=" + Math.random().toString(36) + Math.random().toString(36),
 }), (err) => {
     if (err) throw err;
 });

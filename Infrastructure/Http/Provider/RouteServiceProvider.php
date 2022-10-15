@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider {
     public function boot():void {
         $this->routes(function () {
              Route::group([], base_path('Web/Layout/routes.php'));
-             Route::middleware(['session-auth:allow-guest'])->prefix('login')->group(base_path('Web/Login/routes.php'));
+             Route::middleware(['session:allow-guest'])->prefix('login')->group(base_path('Web/Login/routes.php'));
 
             Route::middleware(['session:allow-guest', BearHtmxMiddleware::class, SubstituteBindings::class])->group(function () {
                 Route::prefix('author')->group(base_path('Web/Author/routes.php'));

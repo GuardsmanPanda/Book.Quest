@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Htmx;
-use Service\Author\Crud\AuthorUserCrudService;
+use Service\Author\Crud\AuthorUserCrud;
 
 class AuthorController extends Controller {
     public function show(string $url_code): View {
@@ -40,7 +40,7 @@ class AuthorController extends Controller {
 
     public function userStatus(Author $author): View {
         $status = AuthorUserStatus::from(Req::getString('status'));
-        AuthorUserCrudService::crud($author, $status);
+        AuthorUserCrud::crud($author, $status);
         return view('author::show.author-follow-button', [
             'author_id' => $author->id,
             'status' => $status->value,

@@ -5,7 +5,7 @@ namespace Web\Narrator\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Infrastructure\Http\Service\Htmx;
-use Service\Narrator\Crud\NarratorCreatorService;
+use Service\Narrator\Crud\NarratorCrud;
 use Symfony\Component\HttpFoundation\Response;
 
 class NarratorCreationController extends Controller {
@@ -14,7 +14,7 @@ class NarratorCreationController extends Controller {
     }
 
     public function create(): Response  {
-        $narrator = NarratorCreatorService::createFromRequest();
+        $narrator = NarratorCrud::createFromRequest();
         return Htmx::hxRedirect('/narrator/show/' . $narrator->narrator_short_url_code . '/' . $narrator->narrator_slug);
     }
 }

@@ -8,17 +8,6 @@
     <script src="{{mix('/static/dist/app.js')}}"  defer></script>
     @if(\Illuminate\Support\Facades\App::isLocal())
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,line-clamp"></script>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        transitionDuration: {
-                            '50': '50ms',
-                        },
-                    }
-                }
-            }
-        </script>
     @endif
     <link rel="stylesheet" href="{{mix('/static/dist/app.css')}}">
 </head>

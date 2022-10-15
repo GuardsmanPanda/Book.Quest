@@ -10,15 +10,14 @@ use Domain\Universe\Model\Universe;
 use Domain\Uri\Crud\UriCreator;
 use Domain\Uri\Enum\UriTypeEnum;
 use Domain\Uri\Model\UriSource;
-use GuardsmanPanda\Larabear\Service\Req;
+use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 
-class SeriesCreatorService {
+class SeriesCrud {
     public static function createFromRequest(): Series {
         $res = SeriesCreator::create(
             series_name: Req::getString('series_name'),
-            time_period: TimePeriodEnum::from(Req::getString('time_period')),
-            world_type: WorldTypeEnum::from(Req::getString('world_type')),
-            universe: Universe::find(Req::getString('universe_id')),
+            world_type: Req::getString('world_type'),
+            universe_id: Req::getString('universe_id'),
         );
 
         if (Req::has('wikipedia_uri')) {

@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Infrastructure\Http\Service\Htmx;
-use Service\Series\Crud\SeriesCreatorService;
+use Service\Series\Crud\SeriesCrud;
 use Symfony\Component\HttpFoundation\Response;
 
 class SeriesCreationController extends Controller {
@@ -32,7 +32,7 @@ class SeriesCreationController extends Controller {
     }
 
     public function create(): Response {
-        $series = SeriesCreatorService::createFromRequest();
+        $series = SeriesCrud::createFromRequest();
         return Htmx::hxRedirect('/series/show/' . $series->series_short_url_code . '/' . $series->series_slug);
     }
 }
