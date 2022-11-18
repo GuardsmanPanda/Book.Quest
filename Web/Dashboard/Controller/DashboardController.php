@@ -6,6 +6,6 @@ use Illuminate\Contracts\View\View;
 
 class DashboardController {
     public function index(): View {
-        return view('dashboard::index');
+        return view(view: 'dashboard::index');
     }
 }

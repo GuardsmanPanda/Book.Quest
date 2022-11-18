@@ -1,20 +1,19 @@
 {
-    "name": "book-quest",
-    "version": "0.0.1",
-    "description": "Book Quest is a simple, fun, and educational way to learn about the world of books.",
-    "private": true,
-    "scripts": {
-        "b": "node Web/Www/Shared/js/esbuild.js"
-    },
-    "author": "Bjørn Dons",
-    "license": "MIT",
-    "dependencies": {
-        "@tailwindcss/forms": "^0.5",
-        "esbuild": "^0.15",
-        "htmx.org": "^1.8",
-        "tailwindcss": "^3.1",
-        "tippy.js": "^6.3",
-        "toastify-js": "^1.12"
-    },
-    "devDependencies": {}
+  "name": "book-quest",
+  "version": "0.0.1",
+  "description": "Book Quest is a simple, fun, and educational way to learn about the world of books.",
+  "private": true,
+  "scripts": {
+    "b": "node Web/Www/Shared/js/esbuild.js"
+  },
+  "author": "Bjørn Dons",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5",
+    "esbuild": "^0.15",
+    "htmx.org": "^1.8",
+    "tailwindcss": "^3.2",
+    "toastify-js": "^1.12"
+  },
+  "devDependencies": {}
 }

@@ -25,7 +25,6 @@ class AuthorScraper {
         foreach ($doc->getElementsByTagName('div') as $span) {
             if ($span->getAttribute('itemprop') === 'birthDate') {
                 $res['birth_date'] = Carbon::parse(trim($span->textContent))->format('Y-m-d');
-                $res['birth_year'] = Carbon::parse(trim($span->textContent))->format('Y');
             }
             if ($span->getAttribute('itemprop') === 'deathDate') {
                 $res['death_date'] = Carbon::parse(trim($span->textContent))->format('Y-m-d');

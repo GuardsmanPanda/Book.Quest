@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\DB;
 use Infrastructure\Auth\Service\Auth;
 use Infrastructure\Http\Service\Htmx;
 use Service\Author\Crud\AuthorUserCrud;
+use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Resp;
 
 class AuthorController extends Controller {
     public function show(string $url_code): View {
         $author = DB::selectOne("
             SELECT
-                a.id, a.author_name, a.followers, a.birth_year, a.birth_date, a.death_date,
+                a.id, a.author_name, a.author_followers, a.birth_date, a.death_date,
                 c.country_name, l.language_name,
                 au.status,
                 ( SELECT COUNT(*)
@@ -56,7 +57,7 @@ class AuthorController extends Controller {
             ORDER BY random()
             LIMIT 1
         ");
-        Htmx::pushUrl("/author/show/$res->author_short_url_code/$res->author_slug");
+        Resp::header('HX-Push', "/author/show/$res->author_short_url_code/$res->author_slug");
         return $this->show($res->author_short_url_code);
     }
 }

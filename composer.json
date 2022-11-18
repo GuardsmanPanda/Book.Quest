@@ -1,44 +1,46 @@
 {
-    "name": "book/quest",
-    "type": "project",
-    "description": "The Quest For More Books",
-    "keywords": ["book", "reading", "quest"],
-    "license": "MIT",
-    "require": {
-        "php": "^8.1",
-        "ext-dom": "*",
-        "ext-libxml": "*",
-        "guardsmanpanda/larabear": "dev-main",
-        "guardsmanpanda/larabear-auth": "dev-main",
-        "guardsmanpanda/larabear-culture": "dev-main",
-        "guardsmanpanda/larabear-ui": "dev-main",
-        "guzzlehttp/guzzle": "^7.5",
-        "laravel/framework": "^v9.33"
-    },
-    "autoload": {
-        "psr-4": {
-            "Domain\\": "Domain/",
-            "Integration\\": "Integration/",
-            "Infrastructure\\": "Infrastructure/",
-            "Service\\": "Service/",
-            "Web\\": "Web/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ]
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "guardsmanpanda/larabear-dev": "dev-main",
-        "roave/security-advisories": "dev-latest"
+  "name": "book/quest",
+  "type": "project",
+  "description": "The Quest For More Books",
+  "keywords": [
+    "book",
+    "reading",
+    "quest"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "ext-dom": "*",
+    "ext-libxml": "*",
+    "guardsmanpanda/larabear": "dev-main",
+    "guardsmanpanda/larabear-auth": "dev-main",
+    "guardsmanpanda/larabear-ui": "dev-main",
+    "guzzlehttp/guzzle": "^7.5",
+    "laravel/framework": "^v9.40"
+  },
+  "autoload": {
+    "psr-4": {
+      "Domain\\": "Domain/",
+      "Integration\\": "Integration/",
+      "Infrastructure\\": "Infrastructure/",
+      "Service\\": "Service/",
+      "Web\\": "Web/"
     }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  }
 }

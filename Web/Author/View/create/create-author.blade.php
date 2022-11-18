@@ -17,12 +17,6 @@
             </div>
             <div class="grid grid-cols-3 gap-2 w-full">
                 <div class="">
-                    <label for="birth_year" class="block text-sm font-medium text-gray-800">Birth Year</label>
-                    <input type="number" name="birth_year" id="birth_year"
-                           value="{{$goodreads_data['birth_year'] ?? ''}}"
-                           class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"/>
-                </div>
-                <div class="">
                     <label for="birth_date" class="block text-sm font-medium text-gray-800">Birth Date</label>
                     <input type="date" name="birth_date" id="birth_date" value="{{$goodreads_data['birth_date'] ?? ''}}"
                            class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"/>

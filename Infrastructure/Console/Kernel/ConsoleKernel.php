@@ -2,9 +2,11 @@
 
 namespace Infrastructure\Console\Kernel;
 
+use GuardsmanPanda\LarabearAuth\Infrastructure\Oauth2\Model\BearOauth2Client;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class ConsoleKernel extends Kernel {
     /**
@@ -30,7 +32,7 @@ class ConsoleKernel extends Kernel {
      * @return void
      */
     protected function commands(): void {
-        Artisan::command('zz:test', function () {
+        Artisan::command('zz', function () {
 
         });
     }

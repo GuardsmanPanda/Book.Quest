@@ -4,7 +4,7 @@ require('esbuild').build({
     watch: process.argv.includes("--watch"),
     bundle: true,
     minify: true,
-    logLevel: "debug",
+    logLevel: "info",
     define: {
         global: "window"
     },
@@ -12,7 +12,7 @@ require('esbuild').build({
 }).catch(() => process.exit(1))
 
 const exec = require('child_process').exec;
-exec('npx tailwindcss -i Web/Www/Shared/css/app.css -o public/static/dist/app.css', function(error, stdout, stderr){ console.log('\n----\nCSS ' + stdout);  console.log(stderr); });
+exec('npx tailwindcss -c Web/Www/Shared/js/tailwind.config.js -i Web/Www/Shared/css/app.css -o public/static/dist/app.css', function(error, stdout, stderr){ console.log('\n----\nCSS ' + stdout);  console.log(stderr); });
 
 const fs = require('fs')
 fs.writeFile('public/mix-manifest.json', JSON.stringify({

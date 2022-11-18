@@ -4,13 +4,10 @@ namespace Domain\Book\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
-use GuardsmanPanda\Larabear\Enum\BearSeverityEnum;
 use GuardsmanPanda\Larabear\Infrastructure\Database\Traits\BearLogDatabaseChanges;
-use GuardsmanPanda\Larabear\Infrastructure\Error\Crud\BearLogErrorCreator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
-use RuntimeException;
 
 /**
  * AUTO GENERATED FILE DO NOT MODIFY
@@ -38,6 +35,7 @@ use RuntimeException;
  * @method static Builder|BookCategory whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|BookCategory whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Builder|BookCategory orderBy(string $column, string $direction = 'asc')
+ * @method static int count(array $columns = ['*'])
  *
  * @property bool $is_fiction
  * @property string $book_category_enum
@@ -63,19 +61,4 @@ class BookCategory extends Model {
     ];
 
     protected $guarded = ['book_category_enum', 'updated_at', 'created_at', 'deleted_at'];
-
-    public function getAttribute($key) {
-        $resp =  parent::getAttribute($key);
-        if ($resp !== null || array_key_exists(key: $key, array: $this->attributes) || array_key_exists(key: $key, array: $this->relations)) {
-            return $resp;
-        }
-        BearLogErrorCreator::create(
-            message: "Attribute $key not loaded on " . static::class,
-            namespace: "larabear",
-            key: "attribute_not_loaded",
-            severity: BearSeverityEnum::CRITICAL,
-            remedy: "Make sure to include used attributes in the SELECT statement",
-        );
-        throw new RuntimeException(message: "Attribute $key not loaded on " . static::class);
-    }
 }

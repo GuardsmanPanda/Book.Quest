@@ -4,13 +4,10 @@ namespace Domain\Author\Model;
 
 use Carbon\CarbonInterface;
 use Closure;
-use GuardsmanPanda\Larabear\Enum\BearSeverityEnum;
 use GuardsmanPanda\Larabear\Infrastructure\Database\Traits\BearLogDatabaseChanges;
-use GuardsmanPanda\Larabear\Infrastructure\Error\Crud\BearLogErrorCreator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
-use RuntimeException;
 
 /**
  * AUTO GENERATED FILE DO NOT MODIFY
@@ -38,16 +35,13 @@ use RuntimeException;
  * @method static Builder|Author whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Builder|Author whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Builder|Author orderBy(string $column, string $direction = 'asc')
+ * @method static int count(array $columns = ['*'])
  *
  * @property int $author_followers
- * @property int|null $birth_year
- * @property int|null $death_year
  * @property string $id
  * @property string $author_name
  * @property string $author_slug
  * @property string $author_short_url_code
- * @property string|null $biography_html
- * @property string|null $biography_markdown
  * @property string|null $birth_country_iso2_code
  * @property string|null $primary_language_iso2_code
  * @property CarbonInterface|null $birth_date
@@ -74,19 +68,4 @@ class Author extends Model {
     ];
 
     protected $guarded = ['id', 'updated_at', 'created_at', 'deleted_at'];
-
-    public function getAttribute($key) {
-        $resp =  parent::getAttribute($key);
-        if ($resp !== null || array_key_exists(key: $key, array: $this->attributes) || array_key_exists(key: $key, array: $this->relations)) {
-            return $resp;
-        }
-        BearLogErrorCreator::create(
-            message: "Attribute $key not loaded on " . static::class,
-            namespace: "larabear",
-            key: "attribute_not_loaded",
-            severity: BearSeverityEnum::CRITICAL,
-            remedy: "Make sure to include used attributes in the SELECT statement",
-        );
-        throw new RuntimeException(message: "Attribute $key not loaded on " . static::class);
-    }
 }
