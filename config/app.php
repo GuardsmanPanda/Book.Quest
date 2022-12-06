@@ -2,8 +2,6 @@
 
 use GuardsmanPanda\Larabear\Infrastructure\Integrity\Service\ValidateAndParseValue;
 use GuardsmanPanda\Larabear\Provider\BearServiceProvider;
-use GuardsmanPanda\LarabearAuth\Infrastructure\Laravel\Provider\BearAuthServiceProvider;
-use GuardsmanPanda\LarabearUi\Infrastructure\Laravel\Provider\BearUiServiceProvider;
 use Infrastructure\Http\Provider\RouteServiceProvider;
 use Infrastructure\View\Provider\ViewDomainProvider;
 
@@ -40,14 +38,10 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         BearServiceProvider::class,
-        BearAuthServiceProvider::class,
-        BearUiServiceProvider::class,
+        Carbon\Laravel\ServiceProvider::class,
+        Termwind\Laravel\TermwindServiceProvider::class,
 
         ViewDomainProvider::class,
         RouteServiceProvider::class,
-    ],
-
-    'aliases' => [
-        'App' => Illuminate\Support\Facades\App::class,
     ]
 ];

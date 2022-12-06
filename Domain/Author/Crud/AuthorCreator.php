@@ -4,7 +4,7 @@ namespace Domain\Author\Crud;
 
 use Carbon\CarbonInterface;
 use Domain\Author\Model\Author;
-use GuardsmanPanda\Larabear\Infrastructure\App\Service\BearShortUrlCodeService;
+use GuardsmanPanda\Larabear\Infrastructure\App\Service\BearShortCodeService;
 use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDBService;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use Illuminate\Support\Str;
@@ -27,13 +27,13 @@ class AuthorCreator {
 
         $model->author_name = $author_name;
         $model->author_slug = Str::slug($author_name);
-        $model->author_short_url_code = BearShortUrlCodeService::generateNextCode();
+        $model->author_short_url_code = BearShortCodeService::generateNextCode();
         $model->birth_date = $birth_date;
         $model->birth_country_iso2_code = $birth_country_iso2_code;
         $model->death_date = $death_date;
         $model->primary_language_iso2_code = $primary_language_iso2_code;
 
         $model->save();
-        return $model->fresh();
+        return $model;
     }
 }

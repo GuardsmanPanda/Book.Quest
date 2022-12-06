@@ -1,7 +1,6 @@
 require('esbuild').build({
     entryPoints: ['Web/Www/Shared/js/app.js'],
     sourcemap: true,
-    watch: process.argv.includes("--watch"),
     bundle: true,
     minify: true,
     logLevel: "info",
@@ -21,5 +20,4 @@ fs.writeFile('public/mix-manifest.json', JSON.stringify({
 }), (err) => {
     if (err) throw err;
 });
-
 console.log('Build complete')

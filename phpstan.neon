@@ -1,11 +1,11 @@
 parameters:
     tmpDir: storage/phpstan
-    ignoreErrors:
-        - '#Argument of an invalid type stdClass supplied for foreach, only iterables are supported.#'
-    level: 6
+    level: 8
     paths:
         - Domain
         - Infrastructure
         - Integration
         - Service
         - Web
+    ignoreErrors:
+        - '#should return Illuminate\\Contracts\\View\\View but returns Illuminate\\Contracts\\View\\Factory|Illuminate\\Contracts\\View\\View.$#'

@@ -10,7 +10,6 @@ use GuardsmanPanda\Larabear\Infrastructure\Database\Traits\BearLogDatabaseChange
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Query\Builder;
 
 /**
  * AUTO GENERATED FILE DO NOT MODIFY
@@ -24,20 +23,23 @@ use Illuminate\Database\Query\Builder;
  * @method static Book firstOrNew(array $filter, array $values)
  * @method static Book|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
  * @method static Collection|Book all(array $columns = ['*'])
+ * @method static Collection|Book get(array $columns = ['*'])
  * @method static Collection|Book fromQuery(string $query, array $bindings = [])
- * @method static Builder|Book lockForUpdate()
- * @method static Builder|Book select(array $columns = ['*'])
- * @method static Builder|Book with(array  $relations)
- * @method static Builder|Book leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static Builder|Book where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
- * @method static Builder|Book whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
- * @method static Builder|Book whereNotExists(Closure $callback, string $boolean = 'and')
- * @method static Builder|Book whereHas(string $relation, Closure $callback, string $operator = '>=', int $count = 1)
- * @method static Builder|Book whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
- * @method static Builder|Book whereNull(string|array $columns, string $boolean = 'and')
- * @method static Builder|Book whereNotNull(string|array $columns, string $boolean = 'and')
- * @method static Builder|Book whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
- * @method static Builder|Book orderBy(string $column, string $direction = 'asc')
+ * @method static Book lockForUpdate()
+ * @method static Book select(array $columns = ['*'])
+ * @method static Book with(array $relations)
+ * @method static Book leftJoin(string $table, string $first, string $operator = null, string $second = null)
+ * @method static Book where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Book whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
+ * @method static Book whereNotExists(Closure $callback, string $boolean = 'and')
+ * @method static Book whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)
+ * @method static Book whereDoesntHave(string $relation, Closure $callback = null)
+ * @method static Book withWhereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)
+ * @method static Book whereIn(string $column, array $values, string $boolean = 'and', bool $not = false)
+ * @method static Book whereNull(string|array $columns, string $boolean = 'and')
+ * @method static Book whereNotNull(string|array $columns, string $boolean = 'and')
+ * @method static Book whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
+ * @method static Book orderBy(string $column, string $direction = 'asc')
  * @method static int count(array $columns = ['*'])
  *
  * @property int|null $page_count
@@ -47,6 +49,8 @@ use Illuminate\Database\Query\Builder;
  * @property string $age_group
  * @property string $book_slug
  * @property string $book_title
+ * @property string $created_at
+ * @property string $updated_at
  * @property string $world_type
  * @property string $book_category_enum
  * @property string $book_short_url_code
@@ -58,8 +62,6 @@ use Illuminate\Database\Query\Builder;
  * @property string|null $goodreads_url
  * @property string|null $google_books_id
  * @property CarbonInterface|null $publication_date
- * @property CarbonInterface $created_at
- * @property CarbonInterface $updated_at
  *
  * @property Universe|null $universe
  * @property Series|null $series
@@ -78,21 +80,21 @@ class Book extends Model {
 
     /** @var array<string, string> $casts */
     protected $casts = [
-        'created_at' => 'immutable_datetime',
         'publication_date' => 'immutable_date',
-        'updated_at' => 'immutable_datetime',
     ];
-
 
     public function universe(): BelongsTo|null {
         return $this->belongsTo(related: Universe::class, foreignKey: 'universe_id', ownerKey: 'id');
     }
+
     public function series(): BelongsTo|null {
         return $this->belongsTo(related: Series::class, foreignKey: 'series_id', ownerKey: 'id');
     }
+
     public function bookTimePeriodEnum(): BelongsTo {
         return $this->belongsTo(related: BookTimePeriod::class, foreignKey: 'book_time_period_enum', ownerKey: 'book_time_period_enum');
     }
+
     public function bookCategoryEnum(): BelongsTo {
         return $this->belongsTo(related: BookCategory::class, foreignKey: 'book_category_enum', ownerKey: 'book_category_enum');
     }

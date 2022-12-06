@@ -35,7 +35,7 @@
         @include('layout.left-menu-item', ['url' => '/series/find', 'title' => 'Find Series'])
         @include('layout.left-menu-item', ['url' => '/series/random', 'title' => 'Random Series'])
     </div>
-    @if(\Infrastructure\Auth\Service\Auth::hasRole('curator'))
+    @if(BearAuth::hasRole('curator'))
         <div class="grid">
             <div class="relative">
                 <div class="absolute inset-0 flex items-center" aria-hidden="true">

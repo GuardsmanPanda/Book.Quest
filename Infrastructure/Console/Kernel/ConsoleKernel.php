@@ -2,17 +2,17 @@
 
 namespace Infrastructure\Console\Kernel;
 
-use GuardsmanPanda\LarabearAuth\Infrastructure\Oauth2\Model\BearOauth2Client;
+use GuardsmanPanda\Larabear\Infrastructure\Oauth2\Crud\BearOauth2ClientCreator;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ConsoleKernel extends Kernel {
     /**
      * The Artisan commands provided by your application.
      *
-     * @var array<class-string>
+     * @var array<string>
      */
     protected $commands = [
     ];
@@ -33,7 +33,8 @@ class ConsoleKernel extends Kernel {
      */
     protected function commands(): void {
         Artisan::command('zz', function () {
-
+            DB::beginTransaction();
+            DB::commit();
         });
     }
 }

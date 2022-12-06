@@ -39,9 +39,9 @@ htmx.on('htmx:afterOnLoad', event => {
 
 htmx.on("htmx:afterRequest", event => {
     if (event.detail.successful) {
-        if (event.detail.requestConfig.headers['hx-dialog'] === 'open') {
+        if (event.detail.target.id === 'dialog-content') {
             document.getElementById('dialog').showModal();
-        } else if (event.detail.requestConfig.headers['hx-dialog'] === 'close') {
+        } else if (event.detail.elt.hasAttribute('hx-dialog-close')) {
             document.getElementById('dialog').close();
         }
         if ('hx-toast' in event.detail.requestConfig.headers) {

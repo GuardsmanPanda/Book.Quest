@@ -13,10 +13,8 @@
     "ext-dom": "*",
     "ext-libxml": "*",
     "guardsmanpanda/larabear": "dev-main",
-    "guardsmanpanda/larabear-auth": "dev-main",
-    "guardsmanpanda/larabear-ui": "dev-main",
     "guzzlehttp/guzzle": "^7.5",
-    "laravel/framework": "^v9.40"
+    "laravel/framework": "^v9.42"
   },
   "autoload": {
     "psr-4": {
@@ -29,8 +27,7 @@
   },
   "scripts": {
     "post-autoload-dump": [
-      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
     ]
   },
   "config": {
