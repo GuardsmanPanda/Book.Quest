@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Narrator\Model;
 
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Narrator firstOrFail(array $columns = ['*'])
  * @method static Narrator firstOrCreate(array $filter, array $values)
  * @method static Narrator firstOrNew(array $filter, array $values)
- * @method static Narrator|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Narrator|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Collection|Narrator all(array $columns = ['*'])
  * @method static Collection|Narrator get(array $columns = ['*'])
  * @method static Collection|Narrator fromQuery(string $query, array $bindings = [])
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Narrator select(array $columns = ['*'])
  * @method static Narrator with(array $relations)
  * @method static Narrator leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static Narrator where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Narrator where(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Narrator whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
  * @method static Narrator whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static Narrator whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Book\Model;
 
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BookTimePeriod firstOrFail(array $columns = ['*'])
  * @method static BookTimePeriod firstOrCreate(array $filter, array $values)
  * @method static BookTimePeriod firstOrNew(array $filter, array $values)
- * @method static BookTimePeriod|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static BookTimePeriod|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Collection|BookTimePeriod all(array $columns = ['*'])
  * @method static Collection|BookTimePeriod get(array $columns = ['*'])
  * @method static Collection|BookTimePeriod fromQuery(string $query, array $bindings = [])
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BookTimePeriod select(array $columns = ['*'])
  * @method static BookTimePeriod with(array $relations)
  * @method static BookTimePeriod leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static BookTimePeriod where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static BookTimePeriod where(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static BookTimePeriod whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
  * @method static BookTimePeriod whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static BookTimePeriod whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)

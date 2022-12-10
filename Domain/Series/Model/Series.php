@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Series\Model;
 
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Series firstOrFail(array $columns = ['*'])
  * @method static Series firstOrCreate(array $filter, array $values)
  * @method static Series firstOrNew(array $filter, array $values)
- * @method static Series|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Series|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Collection|Series all(array $columns = ['*'])
  * @method static Collection|Series get(array $columns = ['*'])
  * @method static Collection|Series fromQuery(string $query, array $bindings = [])
@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Series select(array $columns = ['*'])
  * @method static Series with(array $relations)
  * @method static Series leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static Series where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Series where(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Series whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
  * @method static Series whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static Series whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)

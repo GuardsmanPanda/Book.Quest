@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Book\Model;
 
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Book firstOrFail(array $columns = ['*'])
  * @method static Book firstOrCreate(array $filter, array $values)
  * @method static Book firstOrNew(array $filter, array $values)
- * @method static Book|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Book|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Collection|Book all(array $columns = ['*'])
  * @method static Collection|Book get(array $columns = ['*'])
  * @method static Collection|Book fromQuery(string $query, array $bindings = [])
@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Book select(array $columns = ['*'])
  * @method static Book with(array $relations)
  * @method static Book leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static Book where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Book where(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Book whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
  * @method static Book whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static Book whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)

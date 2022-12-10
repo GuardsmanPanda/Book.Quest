@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Author\Model;
 
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Author firstOrFail(array $columns = ['*'])
  * @method static Author firstOrCreate(array $filter, array $values)
  * @method static Author firstOrNew(array $filter, array $values)
- * @method static Author|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Author|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Collection|Author all(array $columns = ['*'])
  * @method static Collection|Author get(array $columns = ['*'])
  * @method static Collection|Author fromQuery(string $query, array $bindings = [])
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Author select(array $columns = ['*'])
  * @method static Author with(array $relations)
  * @method static Author leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static Author where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Author where(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Author whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
  * @method static Author whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static Author whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Universe\Model;
 
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Universe firstOrFail(array $columns = ['*'])
  * @method static Universe firstOrCreate(array $filter, array $values)
  * @method static Universe firstOrNew(array $filter, array $values)
- * @method static Universe|null firstWhere(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Universe|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Collection|Universe all(array $columns = ['*'])
  * @method static Collection|Universe get(array $columns = ['*'])
  * @method static Collection|Universe fromQuery(string $query, array $bindings = [])
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Universe select(array $columns = ['*'])
  * @method static Universe with(array $relations)
  * @method static Universe leftJoin(string $table, string $first, string $operator = null, string $second = null)
- * @method static Universe where(string $column, string $operator = null, string $value = null, string $boolean = 'and')
+ * @method static Universe where(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
  * @method static Universe whereExists(Closure $callback, string $boolean = 'and', bool $not = false)
  * @method static Universe whereNotExists(Closure $callback, string $boolean = 'and')
  * @method static Universe whereHas(string $relation, Closure $callback = null, string $operator = '>=', int $count = 1)
