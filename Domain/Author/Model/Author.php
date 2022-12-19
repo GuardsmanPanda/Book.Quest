@@ -19,9 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Author firstOrCreate(array $filter, array $values)
  * @method static Author firstOrNew(array $filter, array $values)
  * @method static Author|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|Author all(array $columns = ['*'])
- * @method static Collection|Author get(array $columns = ['*'])
- * @method static Collection|Author fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static Author lockForUpdate()
  * @method static Author select(array $columns = ['*'])
  * @method static Author with(array $relations)
@@ -37,7 +37,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Author whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Author whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Author orderBy(string $column, string $direction = 'asc')
+ * @method static Author orderByDesc(string $column)
+ * @method static Author limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property int $author_followers
  * @property string $id

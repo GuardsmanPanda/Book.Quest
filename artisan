@@ -1,5 +1,5 @@
 #!/usr/bin/env php
-<?php
+<?php declare(strict_types=1);
 
 define(constant_name: 'LARAVEL_START', value: microtime(as_float: true));
 require __DIR__.'/vendor/autoload.php';

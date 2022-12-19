@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Integration\Goodreads\Client;
 
@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use DOMDocument;
 use Illuminate\Support\Facades\Http;
 
-class AuthorScraper {
+class GoodreadsClient {
     /**
      * @param string $url
      * @return array<string, string>

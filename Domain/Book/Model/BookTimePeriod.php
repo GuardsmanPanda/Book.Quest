@@ -18,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BookTimePeriod firstOrCreate(array $filter, array $values)
  * @method static BookTimePeriod firstOrNew(array $filter, array $values)
  * @method static BookTimePeriod|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|BookTimePeriod all(array $columns = ['*'])
- * @method static Collection|BookTimePeriod get(array $columns = ['*'])
- * @method static Collection|BookTimePeriod fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static BookTimePeriod lockForUpdate()
  * @method static BookTimePeriod select(array $columns = ['*'])
  * @method static BookTimePeriod with(array $relations)
@@ -36,7 +36,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BookTimePeriod whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static BookTimePeriod whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static BookTimePeriod orderBy(string $column, string $direction = 'asc')
+ * @method static BookTimePeriod orderByDesc(string $column)
+ * @method static BookTimePeriod limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property int $approximately_to_year
  * @property int $approximately_from_year

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use Illuminate\Support\Str;
 
@@ -9,7 +9,7 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
+            'port' => 5432,
             'database' => 'book_quest',
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
@@ -20,7 +20,7 @@ return [
         'transaction_free' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
+            'port' => 5432,
             'database' => 'book_quest',
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),

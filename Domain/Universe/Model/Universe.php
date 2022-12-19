@@ -18,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Universe firstOrCreate(array $filter, array $values)
  * @method static Universe firstOrNew(array $filter, array $values)
  * @method static Universe|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|Universe all(array $columns = ['*'])
- * @method static Collection|Universe get(array $columns = ['*'])
- * @method static Collection|Universe fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static Universe lockForUpdate()
  * @method static Universe select(array $columns = ['*'])
  * @method static Universe with(array $relations)
@@ -36,7 +36,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Universe whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Universe whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Universe orderBy(string $column, string $direction = 'asc')
+ * @method static Universe orderByDesc(string $column)
+ * @method static Universe limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property string $id
  * @property string $created_at

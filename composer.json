@@ -14,7 +14,7 @@
     "ext-libxml": "*",
     "guardsmanpanda/larabear": "dev-main",
     "guzzlehttp/guzzle": "^7.5",
-    "laravel/framework": "^v9.42"
+    "laravel/framework": "^v9.44"
   },
   "autoload": {
     "psr-4": {
@@ -38,6 +38,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require-dev": {
+    "phpstan/phpstan": "^1.9",
     "roave/security-advisories": "dev-latest"
   }
 }

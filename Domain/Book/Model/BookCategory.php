@@ -18,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BookCategory firstOrCreate(array $filter, array $values)
  * @method static BookCategory firstOrNew(array $filter, array $values)
  * @method static BookCategory|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|BookCategory all(array $columns = ['*'])
- * @method static Collection|BookCategory get(array $columns = ['*'])
- * @method static Collection|BookCategory fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static BookCategory lockForUpdate()
  * @method static BookCategory select(array $columns = ['*'])
  * @method static BookCategory with(array $relations)
@@ -36,7 +36,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static BookCategory whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static BookCategory whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static BookCategory orderBy(string $column, string $direction = 'asc')
+ * @method static BookCategory orderByDesc(string $column)
+ * @method static BookCategory limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property bool $is_fiction
  * @property string $created_at

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use GuardsmanPanda\Larabear\Infrastructure\Integrity\Service\ValidateAndParseValue;
 use GuardsmanPanda\Larabear\Provider\BearServiceProvider;
@@ -38,8 +38,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         BearServiceProvider::class,
-        Carbon\Laravel\ServiceProvider::class,
-        Termwind\Laravel\TermwindServiceProvider::class,
 
         ViewDomainProvider::class,
         RouteServiceProvider::class,

@@ -1,14 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Web\Author\Controller;
 
+use Domain\Author\Crud\AuthorCreator;
 use Domain\Author\Model\Author;
-use GuardsmanPanda\Larabear\Service\Req;
+use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Htmx;
+use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use Illuminate\Contracts\View\View;
 use Illuminate\Routing\Controller;
-use Infrastructure\Http\Service\Htmx;
-use Integration\Goodreads\Client\AuthorScraper;
-use Service\Author\Crud\AuthorCrud;
+use Integration\Goodreads\Client\GoodreadsClient;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthorCrudController extends Controller {
@@ -16,13 +16,19 @@ class AuthorCrudController extends Controller {
         $goodreads_uri = Req::has('goodreads_uri') ? Req::getString('goodreads_uri') : null;
         return view('author::create.create-author', [
             'goodreads_uri' => $goodreads_uri,
-            'goodreads_data' => $goodreads_uri === null ? [] : AuthorScraper::getDataFromAuthorURL($goodreads_uri),
+            'goodreads_data' => $goodreads_uri === null ? [] : GoodreadsClient::getDataFromAuthorURL($goodreads_uri),
         ]);
     }
 
     public function create(): Response {
-        AuthorCrud::createFromRequest();
-        return Htmx::hxRedirect('/author');
+        $author = AuthorCreator::create(
+            author_name: Req::getString('author_name'),
+            birth_date: Req::getDate('birth_Date'),
+            birth_country_iso2_code: Req::getString('birth_country_iso2_code'),
+            death_date: Req::getDate('death_date'),
+            primary_language_iso2_code: Req::getString('primary_language_iso2_code'),
+        );
+        return Htmx::redirect("/author/details/$author->author_short_url_code/$author->author_slug");
     }
 
     public function update(Author $author): View {

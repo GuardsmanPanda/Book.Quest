@@ -20,9 +20,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Series firstOrCreate(array $filter, array $values)
  * @method static Series firstOrNew(array $filter, array $values)
  * @method static Series|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|Series all(array $columns = ['*'])
- * @method static Collection|Series get(array $columns = ['*'])
- * @method static Collection|Series fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static Series lockForUpdate()
  * @method static Series select(array $columns = ['*'])
  * @method static Series with(array $relations)
@@ -38,7 +38,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Series whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Series whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Series orderBy(string $column, string $direction = 'asc')
+ * @method static Series orderByDesc(string $column)
+ * @method static Series limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property string $id
  * @property string $created_at

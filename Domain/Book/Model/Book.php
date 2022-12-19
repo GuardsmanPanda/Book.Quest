@@ -22,9 +22,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Book firstOrCreate(array $filter, array $values)
  * @method static Book firstOrNew(array $filter, array $values)
  * @method static Book|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|Book all(array $columns = ['*'])
- * @method static Collection|Book get(array $columns = ['*'])
- * @method static Collection|Book fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static Book lockForUpdate()
  * @method static Book select(array $columns = ['*'])
  * @method static Book with(array $relations)
@@ -40,7 +40,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Book whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Book whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Book orderBy(string $column, string $direction = 'asc')
+ * @method static Book orderByDesc(string $column)
+ * @method static Book limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property int|null $page_count
  * @property int|null $series_order_major

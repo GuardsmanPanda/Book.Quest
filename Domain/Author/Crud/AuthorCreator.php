@@ -1,14 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Author\Crud;
 
 use Carbon\CarbonInterface;
 use Domain\Author\Model\Author;
 use GuardsmanPanda\Larabear\Infrastructure\App\Service\BearShortCodeService;
-use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDBService;
-use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
+use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDatabaseService;
 use Illuminate\Support\Str;
-use RuntimeException;
 
 class AuthorCreator {
     public static function create(
@@ -18,10 +16,9 @@ class AuthorCreator {
         CarbonInterface $death_date = null,
         string $primary_language_iso2_code = null
     ): Author {
-        BearDBService::mustBeInTransaction();
-        if (!Req::isWriteRequest()) {
-            throw new RuntimeException(message: 'Database write operations should not be performed in read-only [GET, HEAD, OPTIONS] requests.');
-        }
+        BearDatabaseService::mustBeInTransaction();
+        BearDatabaseService::mustBeProperHttpMethod(verbs: ['POST']);
+
         $model = new Author();
         $model->id = Str::uuid()->toString();
 

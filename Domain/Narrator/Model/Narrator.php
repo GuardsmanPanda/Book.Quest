@@ -19,9 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Narrator firstOrCreate(array $filter, array $values)
  * @method static Narrator firstOrNew(array $filter, array $values)
  * @method static Narrator|null firstWhere(string $column, string $operator = null, string|float|int|bool $value = null, string $boolean = 'and')
- * @method static Collection|Narrator all(array $columns = ['*'])
- * @method static Collection|Narrator get(array $columns = ['*'])
- * @method static Collection|Narrator fromQuery(string $query, array $bindings = [])
+ * @method static Collection all(array $columns = ['*'])
+ * @method static Collection get(array $columns = ['*'])
+ * @method static Collection fromQuery(string $query, array $bindings = [])
  * @method static Narrator lockForUpdate()
  * @method static Narrator select(array $columns = ['*'])
  * @method static Narrator with(array $relations)
@@ -37,7 +37,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Narrator whereNotNull(string|array $columns, string $boolean = 'and')
  * @method static Narrator whereRaw(string $sql, array $bindings = [], string $boolean = 'and')
  * @method static Narrator orderBy(string $column, string $direction = 'asc')
+ * @method static Narrator orderByDesc(string $column)
+ * @method static Narrator limit(int $value)
  * @method static int count(array $columns = ['*'])
+ * @method static mixed sum(string $column)
+ * @method static bool exists()
  *
  * @property string $id
  * @property string $created_at

@@ -1,22 +1,18 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Domain\Author\Crud;
 
 use Domain\Author\Model\Author;
-use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDBService;
-use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
-use RuntimeException;
+use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDatabaseService;
 
 class AuthorDeleter {
     public static function delete(Author $model): void {
-        BearDBService::mustBeInTransaction();
-        if (!Req::isWriteRequest()) {
-            throw new RuntimeException(message: 'Database write operations should not be performed in read-only [GET, HEAD, OPTIONS] requests.');
-        }
+        BearDatabaseService::mustBeInTransaction();
+        BearDatabaseService::mustBeProperHttpMethod(verbs: ['DELETE']);
         $model->delete();
     }
 
     public static function deleteFromId(string $id): void {
-        self::delete(model: Author::where(column: 'id', operator:'=', value: $id)->sole());
+        self::delete(model: Author::findOrFail(id: $id));
     }
 }

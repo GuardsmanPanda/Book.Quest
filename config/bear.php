@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 return [
     'cookie' => [
@@ -24,6 +24,7 @@ return [
     'eloquent-model-generator' => [
         'pgsql' => [
             'author' => ['location' => 'Domain/Author/Model', 'log_change' => true],
+            'author_uri' => ['location' => 'Domain/Author/Model', 'log_change' => true],
             //'author_user' => ['location' => 'Domain/Author/Model', 'log_change' => true],
             'book' => ['location' => 'Domain/Book/Model', 'log_change' => true],
             'book_category' => ['location' => 'Domain/Book/Model', 'log_change' => true],

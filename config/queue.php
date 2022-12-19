@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 return [
     'default' => env(key: 'QUEUE_CONNECTION', default: 'sync'),
