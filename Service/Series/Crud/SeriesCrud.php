@@ -12,7 +12,7 @@ use Domain\Uri\Enum\UriTypeEnum;
 use Domain\Uri\Model\UriSource;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 
-class SeriesCrud {
+final class SeriesCrud {
     public static function createFromRequest(): Series {
         $res = SeriesCreator::create(
             series_name: Req::getString('series_name'),

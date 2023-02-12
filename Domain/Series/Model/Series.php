@@ -57,7 +57,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
-class Series extends Model {
+final class Series extends Model {
     use BearLogDatabaseChanges;
 
     protected $connection = 'pgsql';

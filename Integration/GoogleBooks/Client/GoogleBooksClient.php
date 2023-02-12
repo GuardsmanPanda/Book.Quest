@@ -4,7 +4,7 @@ namespace Integration\GoogleBooks\Client;
 
 use Illuminate\Support\Facades\Http;
 
-class GoogleBooksClient {
+final class GoogleBooksClient {
     /**
      * @param string $id
      * @return array<string, mixed>

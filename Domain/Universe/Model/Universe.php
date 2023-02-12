@@ -52,7 +52,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
-class Universe extends Model {
+final class Universe extends Model {
     use BearLogDatabaseChanges;
 
     protected $connection = 'pgsql';

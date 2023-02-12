@@ -1,3 +1,4 @@
+<?php declare(strict_types=1); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The quest for more books">
     <title>Book.Quest</title>
-    <script src="{{mix('/static/dist/app.js')}}" defer></script>
+    <script src="{!! config('bear.ui.app_js') !!}" defer></script>
     @if(\Illuminate\Support\Facades\App::isLocal())
         <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     @endif
-    <link rel="stylesheet" href="{{mix('/static/dist/app.css')}}">
+    <link rel="stylesheet" href="{!! config('bear.ui.app_css') !!}">
 </head>
 <body class="min-h-screen" style="display: grid; grid-template-columns: 16rem auto;">
 <div class="flex md:w-64 flex-col shadow-lg">
@@ -23,10 +24,12 @@
             @if(\GuardsmanPanda\Larabear\Infrastructure\Auth\Service\BearAuthService::getUserId() === null)
                 <x-bear::buttonDark class="mx-4 mb-4" hx-get="/auth/login-dialog" hx-target="#dialog-content">Test Login</x-bear::buttonDark>
             @else
-                <div class="flex">
-                    <x-bear::buttonDark class="mx-4 mb-4 block">A</x-bear::buttonDark>
-                    <x-bear::buttonDark class="mx-4 mb-4 block">N</x-bear::buttonDark>
-                </div>
+                @if(\GuardsmanPanda\Larabear\Infrastructure\Auth\Service\BearAuthService::hasRole('curator'))
+                    <div class="flex">
+                        <x-bear::buttonDark class="mx-4 mb-4 block" size="small" hx-get="/author/create" hx-target="#dialog-content">A</x-bear::buttonDark>
+                        <x-bear::buttonDark class="mx-4 mb-4 block" size="small">N</x-bear::buttonDark>
+                    </div>
+                @endif
                 <div class="mx-4 mb-4">
                     {{\GuardsmanPanda\Larabear\Infrastructure\Auth\Service\BearAuthService::getUser()->user_display_name}}
                 </div>

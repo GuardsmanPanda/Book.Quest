@@ -5,7 +5,7 @@ namespace Domain\Author\Crud;
 use Domain\Author\Model\Author;
 use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDatabaseService;
 
-class AuthorDeleter {
+final class AuthorDeleter {
     public static function delete(Author $model): void {
         BearDatabaseService::mustBeInTransaction();
         BearDatabaseService::mustBeProperHttpMethod(verbs: ['DELETE']);

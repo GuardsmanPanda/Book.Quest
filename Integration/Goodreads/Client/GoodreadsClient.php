@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use DOMDocument;
 use Illuminate\Support\Facades\Http;
 
-class GoodreadsClient {
+final class GoodreadsClient {
     /**
      * @param string $url
      * @return array<string, string>

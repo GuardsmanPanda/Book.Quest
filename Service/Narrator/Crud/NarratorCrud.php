@@ -9,7 +9,7 @@ use Domain\Uri\Enum\UriTypeEnum;
 use Domain\Uri\Model\UriSource;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 
-class NarratorCrud {
+final class NarratorCrud {
     public static function createFromRequest(): Narrator {
         $result = NarratorCreator::create(
             narrator_name: Req::getString('narrator_name'),

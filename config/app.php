@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use GuardsmanPanda\Larabear\Infrastructure\Integrity\Service\ValidateAndParseValue;
-use GuardsmanPanda\Larabear\Provider\BearServiceProvider;
+use GuardsmanPanda\Larabear\Infrastructure\Laravel\Provider\BearServiceProvider;
 use Infrastructure\Http\Provider\RouteServiceProvider;
 use Infrastructure\View\Provider\ViewDomainProvider;
 
@@ -38,7 +38,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         BearServiceProvider::class,
-
         ViewDomainProvider::class,
         RouteServiceProvider::class,
     ]

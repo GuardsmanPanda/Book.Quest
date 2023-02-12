@@ -9,7 +9,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use Illuminate\Support\Str;
 use RuntimeException;
 
-class UniverseCreator {
+final class UniverseCreator {
     public static function create(
         string $universe_name,
         string $world_type

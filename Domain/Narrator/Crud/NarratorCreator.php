@@ -10,7 +10,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use Illuminate\Support\Str;
 use RuntimeException;
 
-class NarratorCreator {
+final class NarratorCreator {
     public static function create(
         string $narrator_name,
         CarbonInterface $birth_date = null,

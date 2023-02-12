@@ -8,7 +8,7 @@ use Infrastructure\Http\Service\Htmx;
 use Service\Universe\Crud\UniverseCrud;
 use Symfony\Component\HttpFoundation\Response;
 
-class UniverseController extends Controller {
+final class UniverseController extends Controller {
     public function createDialog(): View {
         return view('universe::dialog.add-universe');
     }

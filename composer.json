@@ -38,7 +38,11 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require-dev": {
+    "ergebnis/phpstan-rules": "^1.0",
     "phpstan/phpstan": "^1.9",
-    "roave/security-advisories": "dev-latest"
+    "phpstan/phpstan-deprecation-rules": "^1.1",
+    "phpstan/phpstan-strict-rules": "^1.4",
+    "roave/security-advisories": "dev-latest",
+    "thecodingmachine/phpstan-strict-rules": "^1.0"
   }
 }

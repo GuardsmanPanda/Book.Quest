@@ -6,7 +6,7 @@ use Domain\Uri\Enum\UriTypeEnum;
 use Domain\Uri\Model\Uri;
 use Domain\Uri\Model\UriSource;
 
-class UriCreator {
+final class UriCreator {
     public static function create(
         string $uri_target,
         UriTypeEnum $uri_type,

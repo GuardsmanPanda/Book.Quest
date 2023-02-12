@@ -8,7 +8,7 @@ use Infrastructure\Http\Service\Htmx;
 use Service\Narrator\Crud\NarratorCrud;
 use Symfony\Component\HttpFoundation\Response;
 
-class NarratorCreationController extends Controller {
+final class NarratorCreationController extends Controller {
     public function createDialog(): View {
         return view('narrator::create.create-narrator');
     }

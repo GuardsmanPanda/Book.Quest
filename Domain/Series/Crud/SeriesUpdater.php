@@ -7,7 +7,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDBService;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use RuntimeException;
 
-class SeriesUpdater {
+final class SeriesUpdater {
     public function __construct(private readonly Series $model) {
         BearDBService::mustBeInTransaction();
         if (!Req::isWriteRequest()) {

@@ -9,8 +9,8 @@ Route::get('', [AuthorHomeController::class, 'index'])->name('author.index');
 Route::get('show/{url_code}/{title?}', [AuthorController::class, 'show']);
 Route::get('random', [AuthorController::class, 'random']);
 
-Route::prefix('create')->middleware('permission:author__create')->group(function () {
-    Route::get('dialog', [AuthorCrudController::class, 'createDialog']);
+Route::prefix('create')->middleware(['permission:author-create'])->group(function () {
+    Route::get(uri: '', action: [AuthorCrudController::class, 'createDialog']);
     Route::post('', [AuthorCrudController::class, 'create']);
 });
 

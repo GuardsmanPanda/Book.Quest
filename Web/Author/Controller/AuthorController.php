@@ -13,7 +13,7 @@ use Infrastructure\Http\Service\Htmx;
 use Service\Author\Crud\AuthorUserCrud;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Resp;
 
-class AuthorController extends Controller {
+final class AuthorController extends Controller {
     public function show(string $url_code): View {
         $author = DB::selectOne("
             SELECT

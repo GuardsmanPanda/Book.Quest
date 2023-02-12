@@ -11,7 +11,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\Facades\Route;
 use function base_path;
 
-class RouteServiceProvider extends ServiceProvider {
+final class RouteServiceProvider extends ServiceProvider {
     public function boot(): void {
         $this->routes(function () {
             Route::prefix('auth')->middleware(['session:allow-guest'])->group(base_path(path: 'Web/Auth/routes.php'));

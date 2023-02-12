@@ -7,7 +7,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDBService;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use RuntimeException;
 
-class NarratorDeleter {
+final class NarratorDeleter {
     public static function delete(Narrator $model): void {
         BearDBService::mustBeInTransaction();
         if (!Req::isWriteRequest()) {

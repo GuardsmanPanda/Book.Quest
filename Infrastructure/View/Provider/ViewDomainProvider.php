@@ -4,7 +4,7 @@ namespace Infrastructure\View\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
-class ViewDomainProvider extends ServiceProvider {
+final class ViewDomainProvider extends ServiceProvider {
     public function boot(): void {
         $this->loadViewsFrom(base_path(path: 'Web/Auth/View'), namespace: 'auth');
         $this->loadViewsFrom(base_path(path: 'Web/Author/View'), namespace: 'author');

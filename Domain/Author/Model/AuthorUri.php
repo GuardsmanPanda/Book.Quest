@@ -56,7 +56,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
-class AuthorUri extends Model {
+final class AuthorUri extends Model {
     use BearLogDatabaseChanges;
 
     protected $connection = 'pgsql';

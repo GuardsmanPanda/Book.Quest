@@ -51,7 +51,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
-class BookTimePeriod extends Model {
+final class BookTimePeriod extends Model {
     use BearLogDatabaseChanges;
 
     protected $connection = 'pgsql';

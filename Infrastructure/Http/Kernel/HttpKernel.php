@@ -13,7 +13,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Http\Middleware\BearHtmxMiddleware;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 
-class HttpKernel extends Kernel {
+final class HttpKernel extends Kernel {
     /** @var array<string> $middleware Run Always */
     protected $middleware = [
         BearInitiateMiddleware::class,

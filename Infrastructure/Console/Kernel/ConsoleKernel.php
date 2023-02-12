@@ -7,7 +7,7 @@ use Illuminate\Foundation\Console\Kernel;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
-class ConsoleKernel extends Kernel {
+final class ConsoleKernel extends Kernel {
     protected $commands = [
     ];
 

@@ -1,3 +1,8 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - vendor/ergebnis/phpstan-rules/rules.neon
 parameters:
     tmpDir: storage/phpstan
     level: 8
@@ -7,5 +12,16 @@ parameters:
         - Integration
         - Service
         - Web
+    ergebnis:
+        classesAllowedToBeExtended:
+            - Illuminate\Console\Command
+            - Illuminate\Database\Eloquent\Model
+            - Illuminate\Database\Migrations\Migration
+            - Illuminate\Routing\Controller
+            - Illuminate\Support\ServiceProvider
+            - Illuminate\View\Component
+            - Illuminate\Foundation\Http\Kernel
+            - Illuminate\Foundation\Console\Kernel
+            - Illuminate\Foundation\Support\Providers\RouteServiceProvider
     ignoreErrors:
-        - '#should return Illuminate\\Contracts\\View\\View but returns Illuminate\\Contracts\\View\\Factory|Illuminate\\Contracts\\View\\View.$#'
+        - '#has parameter [^ ]* with( null as)? default value.#'

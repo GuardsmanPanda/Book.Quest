@@ -6,7 +6,7 @@ use Carbon\CarbonInterface;
 use Domain\Author\Model\Author;
 use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDatabaseService;
 
-class AuthorUpdater {
+final class AuthorUpdater {
     public function __construct(private readonly Author $model) {
         BearDatabaseService::mustBeInTransaction();
         BearDatabaseService::mustBeProperHttpMethod(verbs: ['PATCH']);

@@ -57,7 +57,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
-class Author extends Model {
+final class Author extends Model {
     use BearLogDatabaseChanges;
 
     protected $connection = 'pgsql';

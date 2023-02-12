@@ -9,7 +9,7 @@ use Domain\Uri\Enum\UriTypeEnum;
 use Domain\Uri\Model\UriSource;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 
-class UniverseCrud {
+final class UniverseCrud {
     public static function createFromRequest(): Universe {
         $res = UniverseCreator::create(
             universe_name: Req::getString('universe_name'),

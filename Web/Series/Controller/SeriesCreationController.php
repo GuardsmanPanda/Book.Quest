@@ -11,7 +11,7 @@ use Infrastructure\Http\Service\Htmx;
 use Service\Series\Crud\SeriesCrud;
 use Symfony\Component\HttpFoundation\Response;
 
-class SeriesCreationController extends Controller {
+final class SeriesCreationController extends Controller {
     public function createDialog(): View {
         return view('series::create.create-series');
     }

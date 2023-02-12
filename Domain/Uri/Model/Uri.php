@@ -44,7 +44,7 @@ use Infrastructure\Audit\Traits\AuditChangeLogger;
  *
  * AUTO GENERATED FILE DO NOT MODIFY
  */
-class Uri extends Model {
+final class Uri extends Model {
     use AuditChangeLogger;
 
     protected $table = 'uri';

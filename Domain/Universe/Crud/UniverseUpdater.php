@@ -7,7 +7,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDBService;
 use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use RuntimeException;
 
-class UniverseUpdater {
+final class UniverseUpdater {
     public function __construct(private readonly Universe $model) {
         BearDBService::mustBeInTransaction();
         if (!Req::isWriteRequest()) {

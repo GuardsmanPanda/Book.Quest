@@ -8,7 +8,7 @@ use GuardsmanPanda\Larabear\Infrastructure\App\Service\BearShortCodeService;
 use GuardsmanPanda\Larabear\Infrastructure\Database\Service\BearDatabaseService;
 use Illuminate\Support\Str;
 
-class AuthorCreator {
+final class AuthorCreator {
     public static function create(
         string $author_name,
         CarbonInterface $birth_date = null,

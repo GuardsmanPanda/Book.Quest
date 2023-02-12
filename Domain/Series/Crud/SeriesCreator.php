@@ -9,7 +9,7 @@ use GuardsmanPanda\Larabear\Infrastructure\Http\Service\Req;
 use Illuminate\Support\Str;
 use RuntimeException;
 
-class SeriesCreator {
+final class SeriesCreator {
     public static function create(
         string $series_name,
         string $world_type,

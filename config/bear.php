@@ -6,16 +6,20 @@ return [
     ],
     'log_database_connection' => 'transaction_free',
     'log_database_change_channel' =>  null,
+    'postmark_from_email' => 'Generaxion <system@generaxion.dev>',
+    'postmark_token' => env(key: 'POSTMARK_TOKEN'),
+    'postmark_sandbox_token' => env(key: 'POSTMARK_SANDBOX_TOKEN'),
     'response_error_log' => [
         'enabled' => true,
-        'ignore_response_codes' => [],
+        'ignore_response_codes' => [401, 403],
     ],
     'route_usage_log' => [
         'enabled' => true,
         'log_one_in_every' => 10,
     ],
-    'uptime_kuma' => [
-        'base_url' => env(key: 'LARABEAR_UPTIME_KUMA_BASE_URL'),
+    'ui' => [
+        'app_css' => file_get_contents(filename: storage_path(path: 'app/app-css-path.txt')),
+        'app_js' => file_get_contents(filename: storage_path(path: 'app/app-js-path.txt')),
     ],
 
     //------------------------------------------------------------------------------------------------------------------
